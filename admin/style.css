@@ -1,0 +1,25 @@
+.scroll{
+    overflow: scroll;
+    
+}
+*{
+    list-style-type: none;
+}
+html{
+    font-size: 16px;
+}
+.nav-side-btn{
+width: 100%;
+
+}
+.nav-side{
+
+width: 20%;
+height: 100vh;
+
+}
+.content{
+width: 80%;
+height: auto;
+
+}

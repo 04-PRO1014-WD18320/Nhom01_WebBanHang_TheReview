@@ -1,0 +1,65 @@
+*{
+    list-style-type: none;
+}
+html{
+    background-color: rgb(236, 236, 236);
+    height: auto;
+    
+}
+
+#nav{
+    background-color: rgb(225, 11, 30);
+}
+.nav-btn{
+    height: 3.5rem;
+}
+.navbar-dark-i{
+    background-color: white;
+}
+#nav-hozi{
+    background-color: rgb(236, 236, 236);
+    height: 30rem;
+}
+#main{
+    background-color: rgb(236, 236, 236);
+    height: 30rem;
+}
+#slider{
+    height: 30rem;
+}
+#carousel-item{
+    height: 30rem;
+}
+.img-slider{
+    height: 22em;
+}
+#carouselExampleIndicators{
+    padding-top: 1.5rem;
+}
+.btn-hover:hover{
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    transform: scaleX(1.02);
+    clip-path: polygon(0% 0%, 90% 0, 100% 50%, 90% 100%, 0% 100%);    
+}
+.dropdown-menu{
+    border-radius: 0;
+}
+.span-bad{
+    margin-top: 1.5rem;
+    padding-right: 3.5rem;
+}
+#logo{
+    width: 1rem;
+    height: 1rem;
+}
+.sec-2-list{
+    list-style-type: none;
+}
+#product-sec-2{
+    margin-top: 10rem !important;
+}
+.question{
+    width: 60px;
+}
