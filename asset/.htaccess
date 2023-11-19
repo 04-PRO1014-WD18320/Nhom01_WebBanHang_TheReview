@@ -1,7 +1,0 @@
-<files .htaccess="../asset">
-
-order allow,deny
-
-deny from all
-
-</files>
