@@ -21,8 +21,8 @@ class C_trang_chu
         $m_trang_chu = new M_hang_hoa();
         $chi_tiet_hang_hoa = $m_trang_chu->hang_hoa_select_by_id($ma_hang_hoa);
         $loai_hang = $m_trang_chu->hang_hoa_select_by_loai($ma_loai);
-        $m_binh_luan = new M_binh_luan();
-        $binh_luan_by_id = $m_binh_luan->binh_luan_by_ma_hang($ma_hang_hoa);
+        // $m_binh_luan = new M_binh_luan();
+        // $binh_luan_by_id = $m_binh_luan->binh_luan_by_ma_hang($ma_hang_hoa);
 
 
         $title = "Chi tiết";

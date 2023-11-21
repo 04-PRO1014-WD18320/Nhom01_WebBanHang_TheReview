@@ -1,10 +1,9 @@
-<?php session_start(); ?>
 <section class="my_header">
     <div class="container py-3">
         <div class="row">
             <div class="col-md-3 ">
                 <a href="./index.php">
-                    <img src="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/logo.png?1681350496696" alt="">
+                    <img src="public/asset/logo.png" style="width:5rem" alt="">
                 </a>
             </div>
             <div class="col-md-4">
@@ -19,7 +18,7 @@
                     <div class="col">
                         <div class="row">
                             <div class="col-3">
-                                <div class="fs-2 text-danger"><i class="fa-regular fa-phone-volume"></i></div>
+                                <div class="fs-2 text-danger"><i class="fa-solid fa-phone"></i></div>
                             </div>
                             <div class="col-9">
                                 Tư vấn hỗ trợ<br>
@@ -62,7 +61,7 @@
                                     echo 'Xin chào<br>' . $ho_ten;
                                     //echo '<a href="dang_xuat.php">Đăng xuất</a>';
                                 } else {
-                                    echo '<a href="dang_ky_dang_nhap.php">';
+                                    echo '<a style="text-decoration: none" href="dang_ky_dang_nhap.php">';
                                     echo 'Xin chào<br>';
                                     echo '<strong class="text-danger">Đăng nhập</strong> </a>';
                                 }
@@ -87,7 +86,7 @@
                         </a></div>
                     <?php if (1) { ?>
                     <div class="col"><a href="./gio_hang.php" class=" position-relative">
-                            <span class="fs-2 "><i class="fa-regular fa-cart-shopping"></i></span>
+                            <span class="fs-2 "><i class="fa-solid fa-cart-shopping"></i></i></span>
                             <span
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 00
