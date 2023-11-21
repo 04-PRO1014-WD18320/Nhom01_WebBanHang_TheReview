@@ -10,8 +10,6 @@ class C_dang_ky_dang_nhap
         include("view_site/layout/index.php");
     }
 
-
-
     function dang_ky()
     {
         $view = 'view_site/dang_ky_dang_nhap/dang_ky.php';

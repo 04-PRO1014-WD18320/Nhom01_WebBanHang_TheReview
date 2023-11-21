@@ -1,42 +1,89 @@
+
 <section class="mymaincontent my-3">
     <div class="container">
-        <div class="slider">
-            <div id="carouselExampleIndicators" class="carousel slide">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/slider_1.jpg?1681350496696" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/slider_1.jpg?1681350496696" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://bizweb.dktcdn.net/100/429/689/themes/869367/assets/slider_1.jpg?1681350496696" class="d-block w-100" alt="...">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-
-        </div>
-        <!-- slider -->
-
-
-
+        <img src="public/asset/macbook2.jpeg" style="height: 25rem" class="d-block w-100 img-slider my-3" alt="...">
         <div class="container my-2 pa 3 ">
             <div class="product-list mb-3 container">
                 <div class="product_title border-bottom">
-                    <strong class="bg-danger text-white ">Sản phẩm</strong>
+                    <h2 class="fs-bold ">Sản phẩm</h2>
+                </div>
+                <div class="row">
+                    <form action="" method="post" class='container d-flex '>
+                        <div class="dropdown my-auto mx-2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ram
+                            </button>
+                            <ul class="dropdown-menu p-3">
+                                <li>
+                                    <div class="form-check dropdown-item">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            8 GB
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check dropdown-item">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            16 GB
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check dropdown-item">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            32 GB
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown my-auto mx-2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dung lượng bộ nhớ
+                            </button>
+                            <ul class="dropdown-menu p-3">
+                                <li>
+                                    <div class="form-check dropdown-item">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            256 GB
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check dropdown-item">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            512 GB
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-check dropdown-item">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            1 TB
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        
+                         <div class="my-auto m-3 col-3">
+                         <label for="priceRangeSlider">Khoảng giá</label>
+                         <div id="priceRangeSlider" class="my-2"></div>
+                         <p id="priceRange">$0 - $1000</p>
+                        </div>
+                   
+                        <div class="my-auto m-3">
+                            <input type="submit" class="btn btn-success d-block" value="Tìm kiếm">
+                        </div>
+                    </form>
+
                 </div>
                 <div class="product-list-s my-3">
                     <div class="row container">
@@ -44,25 +91,43 @@
                         foreach ($hang_hoa_by_loai as $san_pham) {
 
                         ?>
-                            <div class="col-md-3 mb-3">
-                                <a href="./index.php?ma_hang_hoa=<?php echo $san_pham['ma_hang_hoa']; ?> &ma_loai=<?php echo $san_pham['ma_loai']; ?>">
+                            <div class="col-xl-3 col-md-4 mb-3 ">
+                                <a class="card-title link-underline-opacity-0 link-underline" href="./index.php?ma_hang_hoa=<?= $san_pham['ma_hang_hoa']; ?>&ma_loai=<?= $san_pham['ma_loai']; ?>">
 
-                                    <img src="public/<?php echo $san_pham['hinh'] ?>" alt="" style="width: 230px; height: 200px;">
+                                    <div class="card">
+                                        <img style="height: 15rem;" src="public/asset/<?= $san_pham['hinh'] ?>" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class=""><?= $san_pham['ten_hang_hoa'] ?></h5>
+                                            <p class="card-text">Ram Rom </p>
+                                            <span class="badge text-bg-warning">Đã bán: <?= $san_pham['da_ban'] ?></span>
+                                            <del><?= $san_pham['don_gia'] ?> đ</del>
+                                            <p class="fs-5 text-danger fw-bold"><?= $san_pham['don_gia'] ?>đ</p>
 
-                                    <h4><?php echo $san_pham['ten_hang_hoa'] ?></h4>
-                                    <h4><?php echo $san_pham['don_gia'] ?></h4>
-                                    <!-- <input type="number" min="1" value="1" id="quantity"> -->
-                                    <button class="btn btn-primary">Xem chi tiết</button>
+                                            <a href="#" class="btn btn-outline-danger mt-1"><i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng</a>
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
                         <?php } ?>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     </div>
 
 </section>
+<script>
+    $( function() {
+        var priceRangeSlider = $( "#priceRangeSlider" ).slider({
+            range: true,
+            min: 1000000,
+            max: 50000000,
+            values: [ 0, 1000 ],
+            slide: function( event, ui ) {
+                $( "#priceRange" ).text( "" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            }
+        });
+        $( "#priceRange" ).text( "" + priceRangeSlider.slider( "values", 0 ) +
+            " - " + priceRangeSlider.slider( "values", 1 ) );
+    } );
+</script>
