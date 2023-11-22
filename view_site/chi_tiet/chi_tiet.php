@@ -167,7 +167,7 @@
             </tbody>
         </table>
     </div>
-
+    
     <div id="sec-4" class="mx-5 d-flex flex-column">
         <h3 class="mt-5 mb-4">Mô tả sản phẩm</h3>
         <img src="public/asset/<?= $chi_tiet_hang_hoa['hinh'] ?>" style="width: 30rem;" alt="">
@@ -184,10 +184,14 @@
             <input type="submit" name="submit" class="btn btn-primary" value="Gửi">
 
         </form>
+        
+        <?php
+        foreach ($binh_luan_by_id as $comment) {
+        ?>
         <div class="card mt-3">
             <div class="card-header">
                 <img src="public/asset/male.png" style="width: 1rem;" />
-                Post
+                
             </div>
             <div class="card-body">
                 <p class="card-title">
@@ -222,6 +226,7 @@
                 </div>
             </div>
         </div>
+        <?php } ?>
     </div>
 </div>
 

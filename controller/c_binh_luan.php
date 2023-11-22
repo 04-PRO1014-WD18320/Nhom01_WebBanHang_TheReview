@@ -18,10 +18,7 @@ class C_binh_luan
     {
         $m_binh_luan = new M_binh_luan();
         $binh_luan_by_id = $m_binh_luan->binh_luan_select_by_id($ma_hang_hoa2);
-        // var_dump($binh_luan_by_id);
-        // view
-
-        // view 
+      
         $title = "Danh sách bình luận theo sản phẩm";
         $view = "view/binh_luan/v_binh_luan_by_ma_hang.php";
         include("view/layout/index.php");
