@@ -12,7 +12,7 @@ if (isset($_GET['ma_hang_hoa'])) {
 }
 
 if (isset($_POST['action']) && $_POST['action'] === 'create') {
-    $res =   $c_binh_luan->binh_luan($_POST, $ma_khach_hang);
+    $res =  $c_binh_luan->binh_luan($_POST, $ma_khach_hang);
     echo (json_encode($res));
     return;
 }
