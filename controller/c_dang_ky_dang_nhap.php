@@ -65,7 +65,6 @@ class C_dang_ky_dang_nhap
                 }
 
 
-
                 //header("Location: index.php");
             } else {
                 echo 'Đăng nhập thất bại';
