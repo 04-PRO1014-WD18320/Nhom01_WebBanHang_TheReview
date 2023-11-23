@@ -167,7 +167,7 @@
             </tbody>
         </table>
     </div>
-    
+
     <div id="sec-4" class="mx-5 d-flex flex-column">
         <h3 class="mt-5 mb-4">Mô tả sản phẩm</h3>
         <img src="public/asset/<?= $chi_tiet_hang_hoa['hinh'] ?>" style="width: 30rem;" alt="">
@@ -175,45 +175,44 @@
     </div>
     <h3 class="mt-5 mb-4 m-5">Bình luận</h3>
     <div style="width: 80%" class="d-block mx-auto">
-
-        <form style="width:100%" method="post">
-
+        <form style="width:100%" method="POST" id="binh_luan">
             <div class="mb-3">
-                <textarea name="comment" id="" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
+                <textarea name="comment" id="noi_dung" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
             </div>
             <input type="submit" name="submit" class="btn btn-primary" value="Gửi">
 
         </form>
-        
+
+
         <?php
         foreach ($binh_luan_by_id as $comment) {
         ?>
-        <div class="card mt-3">
-            <div class="card-header">
-                <img src="public/asset/male.png" style="width: 1rem;" />
-                
-            </div>
-            <div class="card-body">
-                <p class="card-title">
-                    Contents
-                </p>
-                <a class="btn btn-secondary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Trả lời
-                </a>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        <form style="width:100%" method="post">
-
-                            <div class="mb-3">
-                                <textarea name="comment" id="" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
-                            </div>
-                            <input type="submit" name="submit" class="btn btn-primary" value="Gửi">
-
-                        </form>
-                    </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    <img src="public/asset/male.png" style="width: 1rem;" />
+                    <?= $comment['ho_ten'] ?>
                 </div>
+                <div class="card-body">
+                    <p class="card-title">
+                        <?= $comment['noi_dung'] ?>
+                    </p>
+                    <a class="btn btn-secondary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Trả lời
+                    </a>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <form style="width:100%" method="post">
 
-                <div class="card mx-3 my-2">
+                                <div class="mb-3">
+                                    <textarea name="comment" id="" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
+                                </div>
+                                <input type="submit" name="submit" class="btn btn-primary" value="Gửi">
+
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- <div class="card mx-3 my-2">
                     <div class="card-header">
                         <img src="public/asset/male.png" style="width: 1rem;" />
 
@@ -223,9 +222,9 @@
                         </p>
                     </div>
 
+                </div> -->
                 </div>
             </div>
-        </div>
         <?php } ?>
     </div>
 </div>
@@ -264,8 +263,6 @@
         var so_luong = $('#so_luong').val();
         var action = "create"; // Định nghĩa biến action và gán giá trị "create"
 
-
-
         // Tạo một đối tượng JavaScript chứa dữ liệu để gửi
         var dataToSend = {
             ma_san_pham: ma_san_pham,
@@ -292,59 +289,31 @@
         });
     });
 
-
-
-    $('#binh_luan').click(function() {
-        var ma_san_pham = $('#ma_san_pham').val();
-        var ma_khach_hang = $('#ma_khach_hang').val();
-        var comment = $('#comment').val();
-        var action = "create";
-
-        var dataToSend = {
-            ma_khach_hang: ma_khach_hang,
-            ma_hang_hoa: ma_san_pham,
-            noi_dung: comment,
-            action: action
-        };
-
-        $.ajax({
-            url: "binh_luan.php",
-            method: "POST",
-            data: dataToSend,
-            success: function(data) {
-                data = JSON.parse(data);
-
-                $("#a").text(data);
-
-
-                $('#comment').val('');
-            }
+    $(document).ready(function() {
+        $('#binh_luan').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'binh_luan.php',
+                type: 'POST',
+                data: {
+                    noi_dung: $('#noi_dung').val(),
+                    ma_khach_hang: <?= $_SESSION['id'] ?>,
+                    ma_hang_hoa: <?= $_GET['ma_hang_hoa'] ?>,
+                    thuoc_binh_luan: 0,
+                    action: 'create'
+                },
+                success: function() {
+                    alert('Bình luận thành công');
+                    $('#binh_luan')[0].reset();
+                }
+            })
         });
     });
 
-    $('#binh_luan').click(function() {
-
-        var ma_san_pham = $('#ma_san_pham').val();
-
-        var action = "create2";
 
 
-        // Tạo một đối tượng JavaScript chứa dữ liệu để gửi
-        var dataToSend = {
 
-            ma_hang_hoa: ma_san_pham,
-            action: action
 
-        };
-        $.ajax({
-            url: "binh_luan.php", // Đường dẫn tới tệp gio_hang.php
-            method: "POST",
-            data: dataToSend,
-            success: function(data) {
-
-            }
-        });
-    });
 
     let dungluong = document.querySelectorAll('.dungluong');
     let tendungluong = document.querySelectorAll('.tendungluong');
