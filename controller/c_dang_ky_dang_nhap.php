@@ -5,7 +5,6 @@ class C_dang_ky_dang_nhap
 {
     function hienthidangnhap()
     {
-
         $view = 'view_site/dang_ky_dang_nhap/dang_nhap.php';
         include("view_site/layout/index.php");
     }
@@ -39,8 +38,6 @@ class C_dang_ky_dang_nhap
         // var_dump($dang_nhap);
         // echo $dang_nhap['mat_khau'];
 
-
-
         if ($dang_nhap) {
             $stored_password = $dang_nhap[0]['mat_khau'];
 
@@ -59,9 +56,11 @@ class C_dang_ky_dang_nhap
 
 
                 if ($vai_tro == 1) {
-                    header("Location: loai_hang.php");
-                } else {
-                    header("Location: index.php");
+                    header("Location:loai_hang.php");
+                } else if($vai_tro == 2){
+                    header("Location:admin.php");
+                }else {
+                    header("Location:index.php");
                 }
 
 

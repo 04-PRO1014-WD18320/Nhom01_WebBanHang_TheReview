@@ -15,8 +15,10 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
                                 <input type="text" id="ho_ten" name="ho_ten" class="form-control my-2"
                                     placeholder="Vui lòng nhập họ tên" required>
                                 <h5>Email</h5>
-                                <input type="email" id="ho_ten" name="ho_ten" class="form-control my-2"
+                                <input type="email" id="ho_ten" name="email" class="form-control my-2"
                                     placeholder="Vui lòng nhập họ tên" required>
+                                <h5>Hình ảnh</h5>
+                                <input type="file" id="hinh" name="hinh" class="form-control my-2">
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-10 p-5">
