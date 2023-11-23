@@ -38,7 +38,7 @@
                                         <button type="button" class="btn-close btn btn-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
                                     </div>
                                     <div class="modal-body">
-                                        <div style="height: 450px;" class=" w-100 border border-2 border-secondary overflow-auto">
+                                        <div style="height: 450px;" class="m-3 w-100 border border-2 border-secondary overflow-auto">
                                         <div class="alert alert-danger" role="alert">
                                             Hien thi tin nhan
                                             </div>
@@ -153,3 +153,7 @@
             </tbody>
         </table>
     </div>
+
+<script>
+    
+</script>
