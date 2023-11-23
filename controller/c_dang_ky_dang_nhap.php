@@ -56,9 +56,11 @@ class C_dang_ky_dang_nhap
 
 
                 if ($vai_tro == 1) {
-                    header("Location: loai_hang.php");
-                } else {
-                    header("Location: index.php");
+                    header("Location:loai_hang.php");
+                } else if($vai_tro == 2){
+                    header("Location:admin.php");
+                }else {
+                    header("Location:index.php");
                 }
 
 

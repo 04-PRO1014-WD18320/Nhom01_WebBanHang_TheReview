@@ -11,7 +11,7 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
                 <h1>Đăng nhập</h1>
                 <div class="form-group">
                     <h5>Tài khoản</h5>
-                    <input type="text" name="emai_dang_nhap" id="validationCustom01" class="form-control my-2" placeholder="Vui lòng nhập tài khoản" >
+                    <input type="text" name="email_dang_nhap" id="validationCustom01" class="form-control my-2" placeholder="Vui lòng nhập tài khoản" >
                     
                     <h5>Mật khẩu</h5>
                     
