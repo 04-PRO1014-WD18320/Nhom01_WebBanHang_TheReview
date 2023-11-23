@@ -9,7 +9,16 @@ class C_dang_ky_dang_nhap
         $view = 'view_site/dang_ky_dang_nhap/dang_nhap.php';
         include("view_site/layout/index.php");
     }
-
+    function quenmatkhau()
+    {
+        $view = 'view_site/dang_ky_dang_nhap/quen_mat_khau.php';
+        include("view_site/layout/index.php");
+    }
+    function doi_mat_khau($email)
+    {
+        $view = 'view_site/dang_ky_dang_nhap/doi_mat_khau.php';
+        include("view_site/layout/index.php");
+    }
     function dang_ky()
     {
         $view = 'view_site/dang_ky_dang_nhap/dang_ky.php';
@@ -30,13 +39,26 @@ class C_dang_ky_dang_nhap
 
         $kh_dk =  $m_dang_ky->khach_hang_dang_ky($dang_ky['ma_khach_hang'], $dang_ky['email'], $dang_ky['ho_ten'], $hinh,  $hashedPassword);
     }
+    function change_pass($account)
+    {
+        $m_change_pass = new M_khach_hang();
+        if ($account['mat_khau']==$account['re-password']) {
+            $options = ['cost' => 12];
+            $hashedPassword = password_hash($account['mat_khau'], PASSWORD_BCRYPT, $options);
+            $change_pass = $m_change_pass->mat_khau_update($account['email'],  $hashedPassword);
+            echo 'Đổi mật khẩu thành công';
+        } else {
+            echo 'Mật khẩu không trùng nhau';
+        }
+        
+    }
     function dang_nhap_tk($email)
     {
         $m_dang_nhap = new M_khach_hang();
-        $dang_nhap =  $m_dang_nhap->dang_nhap($email['email_dang_nhap']);
+        $dang_nhap =  $m_dang_nhap->dang_nhap($email);
         $mat_khau = $email['mat_khau_dang_nhap'];
         // echo $mat_khau;
-        // var_dump($dang_nhap);
+        var_dump($dang_nhap);
         // echo $dang_nhap['mat_khau'];
 
 
@@ -70,6 +92,23 @@ class C_dang_ky_dang_nhap
             } else {
                 echo 'Đăng nhập thất bại';
             }
+        } else {
+            echo "Tài khoản không tồn tại";
+        }
+    }
+    function kiem_tra_tk($email)
+    {
+        $kiem_tra = new M_khach_hang();
+
+        $count =  $kiem_tra->dang_nhap($email);
+        // echo $count['0'];
+        // var_dump($count);
+        // echo $dang_nhap['mat_khau'];
+
+
+
+        if (count($count)==1) {
+                header("location:dang_ky_dang_nhap.php?email=$email");
         } else {
             echo "Tài khoản không tồn tại";
         }

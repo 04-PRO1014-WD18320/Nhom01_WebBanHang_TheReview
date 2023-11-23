@@ -18,6 +18,21 @@ if ($_POST['action2'] == "dang_ky") {
     $c_dang_ky_dang_nhap->hienthidangnhap();
     return;
 }
-
+if ($_POST['action2'] == "submit_forgot") {
+    $c_dang_ky_dang_nhap->kiem_tra_tk($_POST['username']);
+    return;
+}
+if ($_POST['action2'] == "change_pass") {
+    $c_dang_ky_dang_nhap->change_pass($_POST);
+    return;
+}
+if ($_POST['action'] == "quen_mat_khau") {
+    $c_dang_ky_dang_nhap->quenmatkhau();
+    return;
+}
+if ($_GET['email']) {
+    $c_dang_ky_dang_nhap->doi_mat_khau($_GET['email']);
+    return;
+}
 
 $c_dang_ky_dang_nhap->hienthidangnhap();
