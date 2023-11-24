@@ -11,22 +11,36 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-10 p-5">
-                                <h5>Họ và Tên</h5>
+                                <h5>Họ và Tên </h5>
                                 <input type="text" id="ho_ten" name="ho_ten" class="form-control my-2"
-                                    placeholder="Vui lòng nhập họ tên" required>
+                                    placeholder="Vui lòng nhập họ tên">
+                                    <label style="color: red;" for=""><?php if(isset($listError['ho_ten'])){
+                                        echo $listError['ho_ten'];
+                                    } ?></label>
                                 <h5>Email</h5>
-                                <input type="email" id="ho_ten" name="ho_ten" class="form-control my-2"
-                                    placeholder="Vui lòng nhập họ tên" required>
+                                <input type="email" id="ho_ten" name="email" class="form-control my-2"
+                                    placeholder="Vui lòng nhập họ tên">
+                                    <label style="color: red;" for=""><?php if(isset($listError['email'])){
+                                        echo $listError['email'];
+                                    } ?></label>
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-10 p-5">
                                 <h5>Mật khẩu</h5>
                                 <input type="password" id="mat_khau" name="mat_khau" class="form-control my-2"
-                                    placeholder="Vui lòng nhập mật khẩu" minlength="4" maxlength="20" required>
+                                    placeholder="Vui lòng nhập mật khẩu" minlength="4" maxlength="20">
+                                    <label style="color: red;" for=""><?php if(isset($listError['mat_khau'])){
+                                        echo $listError['mat_khau'];
+                                    } ?></label>
+
                                 <h5>Nhập lại mật khẩu</h5>
                                 <input type="password" name="re-password" id="" class="form-control my-2"
-                                    placeholder="Vui lòng nhập lại mật khẩu" minlength="4" maxlength="20" required>
+                                    placeholder="Vui lòng nhập lại mật khẩu" minlength="4" maxlength="20">
                                 <input type="checkbox" name="" id="checkk" class="my-2" > 
+                                <label style="color: red;" for=""><?php if(isset($listError['re-password'])){
+                                        echo $listError['re-password'];
+                                    } ?></label>
+
                                 Tôi đã đọc và đồng ý với 
                                 <a type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                    điều khoản sử dụng
