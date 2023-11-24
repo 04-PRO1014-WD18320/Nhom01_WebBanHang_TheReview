@@ -16,6 +16,7 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
                     <h5>Mật khẩu</h5>
                     
                     <input type="password" name="mat_khau_dang_nhap" id="" class="form-control my-2" placeholder="Vui lòng nhập mật khẩu" >
+
                 <button type="submit" class="btn btn-warning" name="action" value="quen_mat_khau">Quên mật khẩu ?</button>
                 </div>
                 <button type="submit" class="btn btn-danger my-3" name="action" value="dang_nhap">Đăng nhập</button>

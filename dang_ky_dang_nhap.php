@@ -58,4 +58,5 @@ if ($_GET['email']) {
     return;
 }
 
+
 $c_dang_ky_dang_nhap->hienthidangnhap();
