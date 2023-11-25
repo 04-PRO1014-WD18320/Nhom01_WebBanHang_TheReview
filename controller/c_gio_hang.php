@@ -1,5 +1,5 @@
 <?php
-include("model/m_gio_hang.php");
+include_once("model/m_gio_hang.php");
 class C_gio_hang
 {
     function hien_thi_gio_hang($ma_khach_hang)

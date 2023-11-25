@@ -2,6 +2,36 @@
 // session_start();
 ?>
 
+<?php
+if (isset($_SESSION['id'])) { ?>
+
+    <button type="button" class="btn btn-primary position-fixed bottom-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa-solid fa-comments" style="color: #ffffff;"></i> <span class="badge text-bg-danger bg-danger">4</span>
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title fs-5" id="exampleModalLabel">Gửi đến : Admin</h3>
+                    <button type="button" class="btn-close btn btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div style="height: 450px;" class="m-3 w-100 border border-2 border-secondary overflow-auto">
+                        <div class="alert alert-danger" role="alert">
+
+                        </div>
+                    </div>
+                    <form action="" class="w-100 d-flex my-3">
+                        <input class='form-control' type="text" placeholder="Nhập tin nhắn ...">
+                        <button type="submit" id="mes1" class="btn btn-success mx-1">Gửi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php }
+?>
+
 <div class="container pb-5">
     <div id="sec-2" class="container-fluid mt-5">
 
@@ -84,9 +114,10 @@
                             </p>
                         </div>
                         <div class="mt-3 d-grid gap-2">
-                            <a href="#" class="btn btn-danger"><i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                            <button id="add" class="btn btn-danger"><i class="fa-sharp fa-solid fa-cart-shopping"></i>
                                 Mua
-                                ngay</a>
+                                ngay</button>
+                
                             <a href="#" class="btn btn-success"><i class="fa-solid fa-phone"></i> Liên hệ</a>
                         </div>
 
@@ -167,7 +198,7 @@
             </tbody>
         </table>
     </div>
-    
+
     <div id="sec-4" class="mx-5 d-flex flex-column">
         <h3 class="mt-5 mb-4">Mô tả sản phẩm</h3>
         <img src="public/asset/<?= $chi_tiet_hang_hoa['hinh'] ?>" style="width: 30rem;" alt="">
@@ -175,58 +206,57 @@
     </div>
     <h3 class="mt-5 mb-4 m-5">Bình luận</h3>
     <div style="width: 80%" class="d-block mx-auto">
-
-        <form style="width:100%" method="post">
-
+        <form style="width:100%" method="POST">
             <div class="mb-3">
-                <textarea name="comment" id="" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
+                <textarea name="comment"  cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
             </div>
-            <input type="submit" name="submit" class="btn btn-primary" value="Gửi">
-
+            <input name='submitt' type="submit" class="btn btn-primary">
         </form>
         
         <?php
+        include_once "model/m_binh_luan.php";
+        
         foreach ($binh_luan_by_id as $comment) {
+            if(isset($_POST['submitt'])) {
+                if (isset($_SESSION['id'])) {
+                    if((new M_binh_luan())->them_binh_luan2($_GET['ma_hang_hoa'], $_POST['comment'],$_SESSION['id'])){
+                        echo "<script>location.href = 'index.php?ma_hang_hoa=11&ma_loai=31'</script>";
+                    };
+                }else{
+                    header('Location:dang_nhap.php');
+                }
+            }
         ?>
-        <div class="card mt-3">
-            <div class="card-header">
-                <img src="public/asset/male.png" style="width: 1rem;" />
-                
-            </div>
-            <div class="card-body">
-                <p class="card-title">
-                    Contents
-                </p>
-                <a class="btn btn-secondary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Trả lời
-                </a>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        <form style="width:100%" method="post">
-
-                            <div class="mb-3">
-                                <textarea name="comment" id="" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
-                            </div>
-                            <input type="submit" name="submit" class="btn btn-primary" value="Gửi">
-
-                        </form>
-                    </div>
-                </div>
-
-                <div class="card mx-3 my-2">
+            <div id="bl<?= $comment['ho_ten'] ?>">
+                <div class="card mt-3" id="cc">
                     <div class="card-header">
                         <img src="public/asset/male.png" style="width: 1rem;" />
-
+                        <?= $comment['ho_ten'] ?>
                     </div>
                     <div class="card-body">
                         <p class="card-title">
+                            <?= $comment['noi_dung'] ?>
                         </p>
-                    </div>
+                        <a class="btn btn-secondary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Trả lời
+                        </a>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <form style="width:100%" method="post">
 
+                                    <div class="mb-3">
+                                        <textarea name="comment" id="" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
+                                    </div>
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Gửi">
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
         <?php } ?>
+
     </div>
 </div>
 
@@ -264,8 +294,6 @@
         var so_luong = $('#so_luong').val();
         var action = "create"; // Định nghĩa biến action và gán giá trị "create"
 
-
-
         // Tạo một đối tượng JavaScript chứa dữ liệu để gửi
         var dataToSend = {
             ma_san_pham: ma_san_pham,
@@ -292,59 +320,31 @@
         });
     });
 
+    $(document).ready(function() {
+        $('#binh_luan').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'binh_luan.php',
+                type: 'POST',
+                data: {
+                    noi_dung: $('#noi_dung').val(),
+                    ma_khach_hang: <?= $_SESSION['id'] ?>,
+                    ma_hang_hoa: <?= $_GET['ma_hang_hoa'] ?>,
+                    thuoc_binh_luan: 0,
+                    action: 'create'
+                },
+                success: function(data) {
+                    let data1 = JSON.parse(data);
+                    $('#cc').html(data1);
+                    $('#binh_luan')[0].reset();
 
-
-    $('#binh_luan').click(function() {
-        var ma_san_pham = $('#ma_san_pham').val();
-        var ma_khach_hang = $('#ma_khach_hang').val();
-        var comment = $('#comment').val();
-        var action = "create";
-
-        var dataToSend = {
-            ma_khach_hang: ma_khach_hang,
-            ma_hang_hoa: ma_san_pham,
-            noi_dung: comment,
-            action: action
-        };
-
-        $.ajax({
-            url: "binh_luan.php",
-            method: "POST",
-            data: dataToSend,
-            success: function(data) {
-                data = JSON.parse(data);
-
-                $("#a").text(data);
-
-
-                $('#comment').val('');
-            }
+                }
+            })
         });
+
     });
 
-    $('#binh_luan').click(function() {
 
-        var ma_san_pham = $('#ma_san_pham').val();
-
-        var action = "create2";
-
-
-        // Tạo một đối tượng JavaScript chứa dữ liệu để gửi
-        var dataToSend = {
-
-            ma_hang_hoa: ma_san_pham,
-            action: action
-
-        };
-        $.ajax({
-            url: "binh_luan.php", // Đường dẫn tới tệp gio_hang.php
-            method: "POST",
-            data: dataToSend,
-            success: function(data) {
-
-            }
-        });
-    });
 
     let dungluong = document.querySelectorAll('.dungluong');
     let tendungluong = document.querySelectorAll('.tendungluong');

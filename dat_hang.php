@@ -2,6 +2,8 @@
 session_start();
 $ma_khach_hang = $_SESSION['id'];
 include "controller/c_dat_hang.php";
+include "controller/c_don_hang.php";
+$c_don_hang = new C_don_hang();
 $c_dat_hang = new C_dat_hang();
 include("controller/c_gio_hang.php");
 $c_gio_hang = new C_gio_hang();

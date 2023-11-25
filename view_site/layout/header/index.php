@@ -32,11 +32,11 @@
 
                         <div class="row">
                             <div class="col-3 ">
-                                <div class="fs-2 text-danger">
+                                <div class="fs-2 text-danger dropdown">
                                     <?php
                                     if (isset($_SESSION['hinh'])) {
                                         $hinh_anh = $_SESSION['hinh'];
-                                        echo '<div class="avatar-circle pr-2" id="avatar" style="width: 40px; height: 40px; border-radius: 100%; overflow: hidden;" >';
+                                        echo '<div class="dropdown-toggle avatar-circle pr-2" id="avatar" style="width: 40px; height: 40px; border-radius: 100%; overflow: hidden;" >';
                                         echo '<img style="width: 100%; height: 120%; object-fit: cover;" src="' . $hinh_anh . '" alt="Hình ảnh người dùng">';
                                         echo '</div>';
                                     } else {
@@ -46,10 +46,10 @@
 
                                     <div class="dropdown-menu" id="menu">
                                         <ul>
-                                            <li><a href="sua_tk.php">Cập nhật tài
+                                            <li ><a class="dropdown-item" href="sua_tk.php">Cập nhật tài
                                                     khoản</a></li>
 
-                                            <li><a href="dang_xuat.php">Đăng xuất</a></li>
+                                            <li><a class="dropdown-item" href="dang_xuat.php">Đăng xuất</a></li>
                                         </ul>
                                     </div>
                                 </div>

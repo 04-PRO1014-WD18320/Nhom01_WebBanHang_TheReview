@@ -5,7 +5,7 @@ class M_gio_hang extends database
 {
     function gio_hang_select_all($ma_khach_hang)
     {
-        $sql = "SELECT gh.id_gio_hang, gh.ma_san_pham, hh.ten_hang_hoa, hh.don_gia, gh.so_luong_san_pham,(gh.so_luong_san_pham * hh.don_gia) as tong_gia"
+        $sql = "SELECT gh.id_gio_hang, gh.ma_san_pham, hh.hinh ,hh.ten_hang_hoa, hh.don_gia, gh.so_luong_san_pham,(gh.so_luong_san_pham * hh.don_gia) as tong_gia"
             . " FROM gio_hang as gh"
             . " INNER JOIN hang_hoa as hh ON gh.ma_san_pham = hh.ma_hang_hoa"
             . " WHERE gh.ma_khach_hang = ?";
@@ -70,6 +70,6 @@ class M_gio_hang extends database
         INNER JOIN hang_hoa as hh ON gh.ma_san_pham = hh.ma_hang_hoa
         WHERE gh.id_gio_hang = ?
         ";
-        return $this->pdo_query_one($sql, [$id_gio_hang]);
+        return $this->pdo_query($sql, [$id_gio_hang]);
     }
 }
