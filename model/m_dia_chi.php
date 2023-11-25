@@ -35,4 +35,12 @@ class M_dia_chi extends database
         $sql = "INSERT INTO don_hang( id_gio_hang, ma_san_pham, ten_hang_hoa, don_gia, so_luong, tong_gia, ten_khach_hang, email_khach_hang, xa, huyen, tinh, sdt) VALUES(?,?,?,?,?,?,?,?,?,?,?,?) ";
         return $this->pdo_execute($sql, $gh_id2["id_gio_hang"], $gh_id2["ma_san_pham"], $gh_id2["ten_hang_hoa"], $gh_id2["don_gia"], $gh_id2["so_luong_san_pham"], $gh_id2["tong_gia"], $_SESSION['ho_ten'],  $_SESSION['email'], $dc["xa"], $dc["huyen"], $dc["tinh"], $dc["sdt"]);
     }
+    
+    function getAllAdress($tinh, $huyen, $xa){
+        $getTinh = $this->pdo_query_one('SELECT ten_tinh from tinh WHERE id_tinh = '.$tinh);
+        $getHuyen = $this->pdo_query_one('SELECT ten_quan_huyen from quan_huyen WHERE id_quan_huyen = '.$huyen);
+        $getXa = $this->pdo_query_one('SELECT ten_phuong_xa from phuong_xa WHERE id_phuong_xa = '.$xa);
+        return $getTinh[0]." - ".$getHuyen[0]." - ".$getXa[0];
+    }
 }
+

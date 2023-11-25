@@ -2,6 +2,36 @@
 // session_start();
 ?>
 
+<?php
+if (isset($_SESSION['id'])) { ?>
+
+    <button type="button" class="btn btn-primary position-fixed bottom-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa-solid fa-comments" style="color: #ffffff;"></i> <span class="badge text-bg-danger bg-danger">4</span>
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title fs-5" id="exampleModalLabel">Gửi đến : Admin</h3>
+                    <button type="button" class="btn-close btn btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div style="height: 450px;" class="m-3 w-100 border border-2 border-secondary overflow-auto">
+                        <div class="alert alert-danger" role="alert">
+
+                        </div>
+                    </div>
+                    <form action="" class="w-100 d-flex my-3">
+                        <input class='form-control' type="text" placeholder="Nhập tin nhắn ...">
+                        <button type="submit" id="mes1" class="btn btn-success mx-1">Gửi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php }
+?>
+
 <div class="container pb-5">
     <div id="sec-2" class="container-fluid mt-5">
 
@@ -175,57 +205,47 @@
     </div>
     <h3 class="mt-5 mb-4 m-5">Bình luận</h3>
     <div style="width: 80%" class="d-block mx-auto">
-        <form style="width:100%" method="POST" id="binh_luan">
+        <form style="width:100%" id="binh_luan">
             <div class="mb-3">
                 <textarea name="comment" id="noi_dung" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
             </div>
-            <input type="submit" name="submit" class="btn btn-primary" value="Gửi">
-
         </form>
 
 
         <?php
+
         foreach ($binh_luan_by_id as $comment) {
         ?>
-            <div class="card mt-3">
-                <div class="card-header">
-                    <img src="public/asset/male.png" style="width: 1rem;" />
-                    <?= $comment['ho_ten'] ?>
-                </div>
-                <div class="card-body">
-                    <p class="card-title">
-                        <?= $comment['noi_dung'] ?>
-                    </p>
-                    <a class="btn btn-secondary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        Trả lời
-                    </a>
-                    <div class="collapse" id="collapseExample">
-                        <div class="card card-body">
-                            <form style="width:100%" method="post">
-
-                                <div class="mb-3">
-                                    <textarea name="comment" id="" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
-                                </div>
-                                <input type="submit" name="submit" class="btn btn-primary" value="Gửi">
-
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- <div class="card mx-3 my-2">
+            <div id="bl<?= $comment['ho_ten'] ?>">
+                <div class="card mt-3" id="cc">
                     <div class="card-header">
                         <img src="public/asset/male.png" style="width: 1rem;" />
-
+                        <?= $comment['ho_ten'] ?>
                     </div>
                     <div class="card-body">
                         <p class="card-title">
+                            <?= $comment['noi_dung'] ?>
                         </p>
-                    </div>
+                        <a class="btn btn-secondary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Trả lời
+                        </a>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <form style="width:100%" method="post">
 
-                </div> -->
+                                    <div class="mb-3">
+                                        <textarea name="comment" id="" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
+                                    </div>
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Gửi">
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         <?php } ?>
+
     </div>
 </div>
 
@@ -302,16 +322,16 @@
                     thuoc_binh_luan: 0,
                     action: 'create'
                 },
-                success: function() {
-                    alert('Bình luận thành công');
+                success: function(data) {
+                    let data1 = JSON.parse(data);
+                    $('#cc').html(data1);
                     $('#binh_luan')[0].reset();
+
                 }
             })
         });
+
     });
-
-
-
 
 
 

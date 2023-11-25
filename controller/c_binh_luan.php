@@ -3,6 +3,9 @@
 include("model/m_binh_luan.php");
 class C_binh_luan
 {
+    function get_all_binh_luan(){
+        return (new M_binh_luan())->binh_luan_selectall2();
+    }
     function hienthimanhinh()
     {
         // db

@@ -7,7 +7,7 @@ class C_dat_hang
 
         $m_dat_hang = new M_dia_chi();
         $tinh = $m_dat_hang->select_tinh();
-
+        
         $view = 'view_site/dat_hang/dat_hang.php';
         include("view_site/layout/index.php");
     }
@@ -34,4 +34,6 @@ class C_dat_hang
         $m_dat_hang = new M_dia_chi();
         $dat_hang = $m_dat_hang->xac_nhan($gh_id2, $dc);
     }
+
+    
 }

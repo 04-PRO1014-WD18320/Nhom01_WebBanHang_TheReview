@@ -46,10 +46,10 @@
 
                                     <div class="dropdown-menu" id="menu">
                                         <ul>
-                                            <li><a href="sua_tk.php">Cập nhật tài
+                                            <li ><a style="text-decoration:none" href="sua_tk.php">Cập nhật tài
                                                     khoản</a></li>
 
-                                            <li><a href="dang_xuat.php">Đăng xuất</a></li>
+                                            <li><a style="text-decoration:none" href="dang_xuat.php">Đăng xuất</a></li>
                                         </ul>
                                     </div>
                                 </div>

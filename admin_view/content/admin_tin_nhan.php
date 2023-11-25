@@ -1,13 +1,12 @@
 <div class="container-fluid">
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Xin chào Admin xấu trai</h1>
+        <h1 class="h3 mb-0 text-gray-800">Xin chào Admin</h1>
         <h3 class="h5 mb-0 text-gray-800">Quản lý tin nhắn</h3>
     </div>
 
 
     <div class="row">
-        <!-- Button trigger modal -->
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -44,10 +43,7 @@
                                             <div class="alert alert-danger" role="alert">
                                                     <?=$tin_nhan[$key]?>
                                                 </div>
-                                            
-                                                
-                                               
-                                                
+
                                             </div>
                                             <form action="" class="w-100 d-flex my-3">
                                                 <input class='form-control' type="text" placeholder="Nhập tin nhắn ...">

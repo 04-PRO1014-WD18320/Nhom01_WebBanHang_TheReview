@@ -32,6 +32,23 @@ class database
             throw $ex;
         }
     }
+
+    public function pdo_execute_run($sql)
+    {
+        $sql_args = array_slice(func_get_args(), 1);
+        try {
+            $con = $this->pdo_get_connection();
+            if ($con) {
+                $stmt = $con->prepare($sql);
+                if($stmt->execute($sql_args)){
+                    return true;
+                }
+            }
+        } catch (PDOException $ex) {
+            throw $ex;
+        }
+        return false;
+    }
     // truy vấn nhiều dữ liệu 
     public function pdo_query($sql, $sql_args = [])
     {

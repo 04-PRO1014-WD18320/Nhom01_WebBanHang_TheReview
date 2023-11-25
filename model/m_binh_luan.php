@@ -12,6 +12,11 @@ class M_binh_luan extends database
         ";
         return $this->pdo_query($sql, []);
     }
+    function binh_luan_selectall2(){
+        $sql = "SELECT bl.*, kh.ho_ten FROM `binh_luann` as bl JOIN khach_hang as kh
+        on bl.ma_khach_hang = kh.ma_khach_hang order by ma_binh_luan asc";
+        return $this->pdo_query($sql);
+        }
     function binh_luan_select_by_id($ma_hang_hoa)
     {
         $sql = "SELECT * FROM binh_luann WHERE ma_hang_hoa = ?";
