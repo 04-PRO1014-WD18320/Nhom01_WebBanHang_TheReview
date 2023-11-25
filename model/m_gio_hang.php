@@ -34,7 +34,18 @@ class M_gio_hang extends database
             return $this->pdo_execute($sql, $ma_khach_hang, $sp["ma_san_pham"], $sp["so_luong"]);
         }
     }
-
+    function them_sp_vao_gio_hang2($sp, $ma_khach_hang){
+        $sql_check  = "SELECT * FROM gio_hang WHERE ma_khach_hang = ? AND ma_san_pham = ?";
+        $flag = $this->pdo_query_one($sql_check, [$ma_khach_hang, $sp["ma_san_pham"]]);
+        if ($flag) {
+            $sql_update = "UPDATE gio_hang SET so_luong_san_pham = so_luong_san_pham + 1 WHERE ma_khach_hang = ? AND ma_san_pham = ?";
+            $this->pdo_execute($sql_update, $ma_khach_hang, $sp["ma_san_pham"]);
+        } else {
+            $sql = "INSERT INTO gio_hang (ma_khach_hang, ma_san_pham, so_luong_san_pham) VALUE (?, ?, ?)";
+            return $this->pdo_execute_run($sql, $ma_khach_hang, $sp["ma_san_pham"], $sp["so_luong"]);
+        }
+        return false;
+    }
 
     function xoa_gio_hang($sp)
     {

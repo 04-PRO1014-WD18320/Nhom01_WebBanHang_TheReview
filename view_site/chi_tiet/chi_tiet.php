@@ -2,11 +2,16 @@
 // session_start();
 ?>
 
+<div id="popup" style="transform : translate(-50%, -50%); " class="position-fixed top-50 start-50 alert alert-info">
+    Đặt hàng thành công
+</div>
+
 <?php
 if (isset($_SESSION['id'])) { ?>
 
+
     <button type="button" class="btn btn-primary position-fixed bottom-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <i class="fa-solid fa-comments" style="color: #ffffff;"></i> <span class="badge text-bg-danger bg-danger">4</span>
+        <i class="fa-solid fa-comments" style="color: #ffffff;"></i> <span class="badge text-bg-danger bg-danger">4</span>
     </button>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -113,14 +118,30 @@ if (isset($_SESSION['id'])) { ?>
 
                             </p>
                         </div>
+
                         <div class="mt-3 d-grid gap-2">
-                            <button id="add" class="btn btn-danger"><i class="fa-sharp fa-solid fa-cart-shopping"></i>
-                                Mua
-                                ngay</button>
-                
+
+                            <!-- <button id="add" class="btn btn-danger"></button> -->
+                            <button id="add" class="btn btn-danger" type="submit">Mua ngay</button>
+
                             <a href="#" class="btn btn-success"><i class="fa-solid fa-phone"></i> Liên hệ</a>
                         </div>
 
+                        <?php
+                        // include_once 'model/m_gio_hang.php';
+                        //     if (isset($_POST['add'])) {
+                        //         if(isset($_SESSION['id'])){
+
+                        //             if((new M_gio_hang())->them_sp_vao_gio_hang2($_GET['ma_hang_hoa'], $_SESSION['id'])){
+                        //                 echo "<script>alert('Thêm thành công')</script>";
+                        //             }else{
+
+                        //             }
+                        //         }else{
+                        //             header('Location:dang_nhap.php');
+                        //         }
+                        //     }
+                        ?>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
                     <a href="#" class="card-title link-underline-opacity-0 link-underline">
@@ -208,21 +229,21 @@ if (isset($_SESSION['id'])) { ?>
     <div style="width: 80%" class="d-block mx-auto">
         <form style="width:100%" method="POST">
             <div class="mb-3">
-                <textarea name="comment"  cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
+                <textarea name="comment" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
             </div>
             <input name='submitt' type="submit" class="btn btn-primary">
         </form>
-        
+
         <?php
         include_once "model/m_binh_luan.php";
-        
+
         foreach ($binh_luan_by_id as $comment) {
-            if(isset($_POST['submitt'])) {
+            if (isset($_POST['submitt'])) {
                 if (isset($_SESSION['id'])) {
-                    if((new M_binh_luan())->them_binh_luan2($_GET['ma_hang_hoa'], $_POST['comment'],$_SESSION['id'])){
+                    if ((new M_binh_luan())->them_binh_luan2($_GET['ma_hang_hoa'], $_POST['comment'], $_SESSION['id'])) {
                         echo "<script>location.href = 'index.php?ma_hang_hoa=11&ma_loai=31'</script>";
                     };
-                }else{
+                } else {
                     header('Location:dang_nhap.php');
                 }
             }
@@ -290,8 +311,8 @@ if (isset($_SESSION['id'])) { ?>
 <script>
     $('#add').on('click', function() {
 
-        var ma_san_pham = $('#ma_san_pham').val();
-        var so_luong = $('#so_luong').val();
+        var ma_san_pham = <?=$_GET['ma_hang_hoa']?>;
+        var so_luong = 1;
         var action = "create"; // Định nghĩa biến action và gán giá trị "create"
 
         // Tạo một đối tượng JavaScript chứa dữ liệu để gửi
@@ -308,19 +329,18 @@ if (isset($_SESSION['id'])) { ?>
             method: "POST",
             data: dataToSend,
             success: function(data) {
-                // Hiển thị popup
-                $("#popup").show();
 
-                // Đặt thời gian chờ 1 giây (1000 milliseconds) trước khi ẩn popup
-                setTimeout(function() {
-                    // Ẩn popup sau 1 giây
-                    $("#popup").hide();
-                }, 1000);
+                // Hiển thị popup
+                $("#popup").hide();
+
+         
+                excutePopup();
             }
         });
     });
-
     $(document).ready(function() {
+
+
         $('#binh_luan').submit(function(e) {
             e.preventDefault();
             $.ajax({
@@ -359,5 +379,15 @@ if (isset($_SESSION['id'])) { ?>
             removeAll();
             tendungluong[index].classList.toggle('btn-success');
         });
-    })
+    });
+    let pop =document.querySelector('#popup');
+    pop.style.display = 'none';
+    function excutePopup(){
+        pop.style.display = 'block';
+        setTimeout(function(){
+            pop.style.display = 'none';
+        },2000);
+        
+    }
+    
 </script>

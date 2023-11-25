@@ -2,7 +2,6 @@
 
 session_start();
 
-// $ma_khach_hang = $_SESSION['id'];
 $ma_khach_hang = $_SESSION['id'];
 include("controller/c_gio_hang.php");
 $c_gio_hang = new C_gio_hang();
