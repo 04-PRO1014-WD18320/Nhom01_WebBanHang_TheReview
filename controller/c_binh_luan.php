@@ -26,17 +26,20 @@ class C_binh_luan
         $view = "view/binh_luan/v_binh_luan_by_ma_hang.php";
         include("view/layout/index.php");
     }
-    function binh_luan($bl, $ma_khach_hang)
-    {
+    // function binh_luan($bl, $ma_khach_hang)
+    // {
 
-        $m_binh_luan = new M_binh_luan();
-        $bl =  $m_binh_luan->them_binh_luan($bl, $ma_khach_hang);
-        //
-        return  $bl;
-    }
+    //     $m_binh_luan = new M_binh_luan();
+    //     return $m_binh_luan->them_binh_luan($bl, $ma_khach_hang);
+     
+    // }
     function binh_luan_hang_hoa($bl_mh)
     {
         $m_binh_luan = new M_binh_luan();
         $binh_luan2 = $m_binh_luan->binh_luan_by_ma_hang($bl_mh);
+    }
+    function them_bl( $ma_hang_hoa, $noi_dung, $ma_khach_hang){
+        $m_binh_luan = new M_binh_luan();
+        return $m_binh_luan->them_binh_luan($ma_hang_hoa, $noi_dung, $ma_khach_hang);
     }
 }

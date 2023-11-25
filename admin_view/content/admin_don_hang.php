@@ -45,6 +45,7 @@
                             <div class="modal fade" id="exampleModal<?= $val['id_don_hang'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
+                                        
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">ID : <?= $val['id_don_hang'] ?></h1>
                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
@@ -74,6 +75,7 @@
                                                 </tbody>
                                             </table>
                                             Tình trạng đơn hàng :
+                                            
                                             <?php
                                             switch ($val['trang_thai']) {
                                                 case 1:

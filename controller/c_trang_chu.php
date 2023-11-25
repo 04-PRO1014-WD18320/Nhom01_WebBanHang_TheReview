@@ -25,7 +25,7 @@ class C_trang_chu
         
         $m_binh_luan = new M_binh_luan();
         $binh_luan_by_id = $m_binh_luan->binh_luan_by_ma_hang($ma_hang_hoa);
-
+        
 
         $title = "Chi tiết";
         $view = "view_site/chi_tiet/chi_tiet.php";

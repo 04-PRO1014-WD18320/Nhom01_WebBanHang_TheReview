@@ -114,9 +114,10 @@ if (isset($_SESSION['id'])) { ?>
                             </p>
                         </div>
                         <div class="mt-3 d-grid gap-2">
-                            <a href="#" class="btn btn-danger"><i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                            <button id="add" class="btn btn-danger"><i class="fa-sharp fa-solid fa-cart-shopping"></i>
                                 Mua
-                                ngay</a>
+                                ngay</button>
+                
                             <a href="#" class="btn btn-success"><i class="fa-solid fa-phone"></i> Liên hệ</a>
                         </div>
 
@@ -205,16 +206,26 @@ if (isset($_SESSION['id'])) { ?>
     </div>
     <h3 class="mt-5 mb-4 m-5">Bình luận</h3>
     <div style="width: 80%" class="d-block mx-auto">
-        <form style="width:100%" id="binh_luan">
+        <form style="width:100%" method="POST">
             <div class="mb-3">
-                <textarea name="comment" id="noi_dung" cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
+                <textarea name="comment"  cols="100" rows="5" class="form-control" placeholder="Mời bạn bình luận và đặt câu hỏi" required></textarea>
             </div>
+            <input name='submitt' type="submit" class="btn btn-primary">
         </form>
-
-
+        
         <?php
-
+        include_once "model/m_binh_luan.php";
+        
         foreach ($binh_luan_by_id as $comment) {
+            if(isset($_POST['submitt'])) {
+                if (isset($_SESSION['id'])) {
+                    if((new M_binh_luan())->them_binh_luan2($_GET['ma_hang_hoa'], $_POST['comment'],$_SESSION['id'])){
+                        echo "<script>location.href = 'index.php?ma_hang_hoa=11&ma_loai=31'</script>";
+                    };
+                }else{
+                    header('Location:dang_nhap.php');
+                }
+            }
         ?>
             <div id="bl<?= $comment['ho_ten'] ?>">
                 <div class="card mt-3" id="cc">
