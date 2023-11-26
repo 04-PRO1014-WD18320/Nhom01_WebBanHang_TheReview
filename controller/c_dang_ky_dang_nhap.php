@@ -9,8 +9,9 @@ class C_dang_ky_dang_nhap
         $view = 'view_site/dang_ky_dang_nhap/dang_nhap.php';
         include("view_site/layout/index.php");
     }
-    function quenmatkhau()
+    function quenmatkhau($error)
     {
+        $listError = $error;
         $view = 'view_site/dang_ky_dang_nhap/quen_mat_khau.php';
         include("view_site/layout/index.php");
     }
@@ -109,9 +110,10 @@ class C_dang_ky_dang_nhap
 
 
         if (count($count)==1) {
-                header("location:dang_ky_dang_nhap.php?email=$email");
+            header("location:dang_ky_dang_nhap.php?email=$email");
         } else {
-            echo "Tài khoản không tồn tại";
+            $error['username'] = "Không có tài khoản này !";
+            $this->quenmatkhau($error);
         }
     }
 }

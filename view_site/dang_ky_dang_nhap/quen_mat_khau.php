@@ -12,6 +12,10 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
                 <div class="form-group">
                     <h5>Nhập Tài khoản</h5>
                     <input type="text" name="username" id="validationCustom01" class="form-control my-2" placeholder="Vui lòng nhập tài khoản" >
+                    <label style="color: red;" for=""><?php if(isset($listError['username'])){
+                                        echo $listError['username'];
+                                    } ?></label>
+
                 </div>
                 <button type="submit" class="btn btn-danger my-3" name="action2" value="submit_forgot">Gửi lại mật khẩu</button>
                 
