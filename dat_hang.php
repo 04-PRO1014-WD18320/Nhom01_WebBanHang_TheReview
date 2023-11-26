@@ -8,8 +8,26 @@ $c_dat_hang = new C_dat_hang();
 include("controller/c_gio_hang.php");
 $c_gio_hang = new C_gio_hang();
 if (isset($_GET['id_gio_hang'])) {
-    $id_gio_hang = $_GET['id_gio_hang'];
-    $gh_id2 = $c_gio_hang->gio_hang_by_id($id_gio_hang);
+   
+    if (!isset($_POST['tinh']) || $_POST['tinh'] == null) {
+        $error['gio_hang']['tinh'] = "Chưa nhập tỉnh";
+    }
+    if (!isset($_POST['huyen']) || $_POST['huyen'] == null) {
+        $error['gio_hang']['huyen'] = "Chưa nhập huyện";
+    }
+    if (!isset($_POST['xa']) || $_POST['xa'] == null) {
+        $error['gio_hang']['xa'] = "Chưa nhập xã";
+    }
+    if (!isset($_POST['sdt']) || $_POST['sdt'] == null) {
+        $error['gio_hang']['sdt'] = "Chưa nhập số điện thoại";
+    }
+    if (isset($error)) {
+        print_r($error);
+    } else {
+        $id_gio_hang = $_GET['id_gio_hang'];
+         $gh_id2 = $c_gio_hang->gio_hang_by_id($id_gio_hang);
+    }
+    return;
 }
 
 if ($_POST['action'] == 'select_huyen') {
