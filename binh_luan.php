@@ -11,11 +11,11 @@ if (isset($_GET['ma_hang_hoa'])) {
     return;
 }
 
-if (isset($_POST['action']) && $_POST['action'] === 'create') {
-    $res =  $c_binh_luan->binh_luan($_POST, $ma_khach_hang);
-    echo (json_encode($res));
-    return;
-}
+// if (isset($_POST['action']) && $_POST['action'] === 'create') {
+//     $res =  $c_binh_luan->binh_luan($_POST, $ma_khach_hang);
+//     echo (json_encode($res));
+//     return;
+// }
 if (isset($_POST['action2']) && $_POST['action2'] === 'create') {
     $c_binh_luan->binh_luan_hang_hoa($_POST);
     return;

@@ -72,7 +72,8 @@
             </div>
     </form>
     <?php
-    include_once "ex_dat_hang.php";
+    // include_once "ex_dat_hang.php";
+    include_once 'model/database.php';
     if (isset($_POST['add_salee'])) {
         
         
@@ -82,27 +83,25 @@
         $huyen = $_POST['quan_huyen'];
         $tinh = $_POST['tinh'];
         $sdt = $_POST['sdt'];
+        $queryDH = "INSERT INTO `don_hang`(`ten_khach_hang`, `email_khach_hang`, `xa`, `huyen`, `tinh`, `sdt`, `trang_thai`)
+        VALUES (?,?,?,?,?,?,?)";  
+        (new database())->pdo_execute_run($queryDH, $ten_khach_hang, $email_khach_hang, $xa, $huyen, $tinh, $sdt, 1);
 
+        $oderID = (new database())->pdo_query_one('select MAX(id_don_hang) from don_hang;');
+        
+        $queryCTDH = "INSERT INTO `ct_don_hang`(`ten_hang_hoa`, `gia_tien`, `so_luong`, `id_don_hang`)
+        VALUES(?,?,?,?)";
         for ($i = 0; $i < count($arrPro)-1; $i++) {        
-            $dat_hang = (new C_gio_hang())->gio_hang_by_id($arrPro[$i]);  
-            $ten_hang_hoa =  $dat_hang[0]['ten_hang_hoa'];
-            $gia_tien = $dat_hang[0]['don_gia'];
-            $so_luong = $dat_hang[0]['so_luong_san_pham'];
-            $tong_gia = $dat_hang[0]['tong_gia'];
+        $dat_hang = (new C_gio_hang())->gio_hang_by_id($arrPro[$i]);  
+        $ten_hang_hoa =  $dat_hang[0]['ten_hang_hoa'];
+        $gia_tien = $dat_hang[0]['don_gia'];
+        $so_luong = $dat_hang[0]['so_luong_san_pham'];
 
-            submitDatHang($ten_hang_hoa,
-            $gia_tien,
-            $so_luong,
-            $tong_gia,
-            $ten_khach_hang,
-            $email_khach_hang,
-            $xa,
-            $huyen,
-            $tinh,
-            $sdt);
-        }
-        echo '<script>alert("Đặt hàng thành công")</script>';
+        (new database())->pdo_execute($queryCTDH, $ten_hang_hoa , $gia_tien,  $so_luong, $oderID[0]);
+        
     }
+    echo '<script>alert("Đặt hàng thành công")</script>';
+}
     ?>
 </div>
 

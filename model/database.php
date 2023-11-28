@@ -49,6 +49,7 @@ class database
         }
         return false;
     }
+
     // truy vấn nhiều dữ liệu 
     public function pdo_query($sql, $sql_args = [])
     {
