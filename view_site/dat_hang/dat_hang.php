@@ -67,7 +67,7 @@
                 ?>
                 </tbody>
                     </table>
-                <input onclick="alert('Đặt hàng thành công')" type="submit" name="add_salee" class="btn btn-primary w-100 form-input my-3" value="Đặt hàng">
+                <input type="submit" name="add_salee" class="btn btn-primary w-100 form-input my-3" value="Đặt hàng">
                 </div>
             </div>
     </form>
@@ -101,7 +101,7 @@
             $tinh,
             $sdt);
         }
-
+        echo '<script>alert("Đặt hàng thành công")</script>';
     }
     ?>
 </div>
