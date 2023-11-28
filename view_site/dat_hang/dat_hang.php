@@ -26,28 +26,6 @@
                         <option value="">Chọn một xã</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="so_dien_thoai">Số điện thoại nhận hàng</label>
-                    <input class="form-control" id="sdt" type="text" placeholder="Nhập số điện thoại nhận hàng">
-                    <label style="color: red;" for=""><?php if(isset($error['sdt'])){
-                                        echo $error['sdt'];
-                                    } ?></label>
-                </div>
-                <input type="text" id="tinhInput" name="tinh" value="">
-                <label style="color: red;" for=""><?php if(isset($listError['tinh'])){
-                                        echo $listError['tinh'];
-                                    } ?></label>
-                <input type="text" id="huyenInput" name="huyen" value="">
-                <label style="color: red;" for=""><?php if(isset($listError['huyen'])){
-                                        echo $listError['huyen'];
-                                    } ?></label>
-                <input type="text" id="xaInput" name="xa" value="">
-                <label style="color: red;" for=""><?php if(isset($listError['xa'])){
-                                        echo $listError['xa'];
-                                    } ?></label>
-
-                <input type="button" name="add_sale" id="add_sale" class="btn btn-primary w-100 form-input my-3"
-                    value="Đặt hàng">
             </div>
             <div>
                 <div class="form-group my-4 d-flex flex-column">
