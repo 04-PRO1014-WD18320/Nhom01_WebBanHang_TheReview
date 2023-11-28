@@ -1,48 +1,49 @@
 <div id="sec-2" class="container-fluid mt-5">
     <div class="d-flex justify-content-between">
         <div clase="col-lg-8 col-md-8 col-sm-6">
-        <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Số thứ tự</th>
-            <th scope="col">Sản phẩm</th>
-            <th scope="col">Tên sản phẩm</th>
-            <th scope="col">Giá sản phẩm</th>
-            <th scope="col">Số lượng</th>
-            <th scope="col">Tổng giá</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <table class="table">
+                <thead>
+                    <tr>
 
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($gio_hang_get_list as $index => $gio_hang) { ?>
-        <tr>
-            <th scope="row"><?php echo $index + 1 ?></th>
-            <td><img style="width: 60px;" src="public/asset/<?=$gio_hang['hinh']?>"/></td>
-            <td><?php echo $gio_hang['ten_hang_hoa'] ?></td>
-            <td><?php echo $gio_hang['don_gia'] ?></td>
-            <td>
-                <input type="button" value="+" class="tang btn btn-primary rounded rounded-circle" data-ma-san-pham="<?php echo $gio_hang['ma_san_pham'] ?>">
+                        <th scope="col"><input id="checkboxall" type="checkbox" value="" /></th>
+                        <th scope="col">Số thứ tự</th>
+                        <th scope="col">Sản phẩm</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Giá sản phẩm</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Tổng giá</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
 
-                <strong id="<?php echo "ma_san_pham" . $gio_hang['ma_san_pham'] ?>">
-                    <?php echo $gio_hang['so_luong_san_pham'] ?></strong>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 
-                <input type="button" value="-" class="giam btn btn-primary rounded rounded-circle" data-ma-san-pham="<?php echo $gio_hang['ma_san_pham'] ?>">
-            </td>
-            <td><?php echo $gio_hang['tong_gia'] ?></td>
-            <td> <input type="button" value="Xoá" class="xoa btn btn-danger" data-ma-san-pham="<?php echo $gio_hang['ma_san_pham'] ?>">
-                <input type="hidden" name="xoa" value="xoa">
-            </td>
-            <td><a href="./dat_hang.php?id_gio_hang=<?php echo $gio_hang['id_gio_hang']; ?>"><input type="button"
-                        class="dat_hang btn btn-success" value="Đặt hàng"></a>
-            </td>
+                    foreach ($gio_hang_get_list as $index => $gio_hang) { ?>
+                        <tr>
 
+                            <td><input id="checkbox" type="checkbox" value="<?= $gio_hang['id_gio_hang'] ?>" /></td>
+                            <th scope="row"><?php echo $index + 1 ?></th>
+                            <td><img style="width: 60px;" src="public/asset/<?= $gio_hang['hinh'] ?>" /></td>
+                            <td><?php echo $gio_hang['ten_hang_hoa'] ?></td>
+                            <td><?php echo $gio_hang['don_gia'] ?></td>
+                            <td>
+                                <input type="button" value="+" class="tang btn btn-primary rounded rounded-circle" data-ma-san-pham="<?php echo $gio_hang['ma_san_pham'] ?>">
 
-        </tr>
-        <?php } ?>
+                                <strong id="<?php echo "ma_san_pham" . $gio_hang['ma_san_pham'] ?>">
+                                    <?php echo $gio_hang['so_luong_san_pham'] ?></strong>
 
-</table>
+                                <input type="button" value="-" class="giam btn btn-primary rounded rounded-circle" data-ma-san-pham="<?php echo $gio_hang['ma_san_pham'] ?>">
+                            </td>
+                            <td><?php echo $gio_hang['tong_gia'] ?></td>
+                            <td> <input type="button" value="Xoá" class="xoa btn btn-danger" data-ma-san-pham="<?php echo $gio_hang['ma_san_pham'] ?>">
+                                <input type="hidden" name="xoa" value="xoa">
+                            </td>
+                        </tr>
+                    <?php } ?>
+
+            </table>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6">
 
@@ -54,19 +55,21 @@
 
                     <div class="card d-flex flex-row mt-3">
                         <div class="card-body">
-                            <h5>Tên khách hàng : <?=$_SESSION['ho_ten']?></h5>
-                            <p>Email : <?=$_SESSION['email']?></p>
-                            <p>Số điện thoại : </p>
+                            <h5>Tên khách hàng : <?= $_SESSION['ho_ten'] ?></h5>
+                            <p>Email : <?= $_SESSION['email'] ?></p>
+
                             <h5 class="fw-bold text-danger">Thành tiền : $</h5>
                         </div>
 
                     </div>
-
                 </div>
+                
+                <button class="dat_hang btn btn-success m-3">Đặt hàng</button>
             </div>
         </div>
     </div>
 </div>
+
 <script>
     $('.tang').on('click', function() {
         var ma_san_pham = $(this).data('ma-san-pham');
@@ -137,5 +140,41 @@
                 console.log("Lỗi khi gửi yêu cầu: " + error);
             }
         });
+        location.reload();
+    });
+
+    let checkbox = document.querySelectorAll('#checkbox');
+    let checkboxAll = document.querySelector('#checkboxall');
+    let checkArr = document.querySelector('#checkArr');
+    let dat_hang = document.querySelector(".dat_hang");
+    let checkBuy = false;
+
+
+    checkboxAll.addEventListener('click', function() {
+        let flagAll = checkboxAll.checked;
+        checkbox.forEach((e) => {
+            e.checked = flagAll;
+        });
+    });
+
+    dat_hang.addEventListener('click', function() {
+        checkbox.forEach((e) => {
+            if (e.checked) {
+                checkBuy = true;
+            }
+        });
+        if (checkBuy) {
+            let text = "";
+            checkbox.forEach((e) => {
+                if (e.checked) {
+                    text += `${e.value}.`;
+                }
+            });
+            
+            location.href = `./dat_hang.php?id_gio_hang=${text}`;
+        }else{
+            alert('Vui lòng chọn sản phẩm !');
+        }
+
     });
 </script>

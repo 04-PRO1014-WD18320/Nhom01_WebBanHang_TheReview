@@ -5,7 +5,7 @@
             <div>
                 <div class="form-group">
                     <label for="province">Tỉnh/Thành phố</label>
-                    <select id="tinh" name="tinh" class="form-control">
+                    <select id="tinh" name="tinh" class="form-control" required>
                         <option value="">Chọn một tỉnh</option>
                         <?php foreach ($tinh as $tinh) { ?>
                             <option value="<?php echo $tinh['id_tinh']; ?>">
@@ -16,13 +16,13 @@
                 </div>
                 <div class="form-group">
                     <label for="">Quận/Huyện</label>
-                    <select id="quan_huyen" name="quan_huyen" class="form-control">
+                    <select id="quan_huyen" name="quan_huyen" class="form-control" required>
                         <option value="">Chọn một quận/huyện</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="phuong_xa">Phường/Xã</label>
-                    <select id="phuong_xa" name="phuong_xa" class="form-control">
+                    <select id="phuong_xa" name="phuong_xa" class="form-control" required>
                         <option value="">Chọn một xã</option>
                     </select>
                 </div>
@@ -31,47 +31,66 @@
                 <div class="form-group my-4 d-flex flex-column">
                     <label for="">Thông tin khách hàng</label>
 
-                    <input type="text" class="form-control" value="<?= $_SESSION['ho_ten'] ?>">
-                    <input type="text" class="form-control" value="<?= $_SESSION['email'] ?>">
+                    <input type="text" class="form-control" value="<?= $_SESSION['ho_ten'] ?>" required>
+                    <input type="text" class="form-control" value="<?= $_SESSION['email'] ?>" required>
                     <input class="form-control" name="sdt" id="sdt" type="number" placeholder="Nhập số điện thoại nhận hàng" required>
                 </div>
                 <div class="form-group my-4 d-flex flex-column">
                     <label>Thông tin đơn hàng</label>
-                    <?php include_once "controller/c_gio_hang.php";
-                    $dat_hang = (new C_gio_hang())->gio_hang_by_id($_GET['id_gio_hang']);
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Tên sản phẩm</td>
+                                <td>Đơn giá</td>
+                                <td>Số lượng</td>
+                                <td>Tổng giá</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php include_once "controller/c_gio_hang.php";
+                            $arrPro = explode(".", rtrim($_GET['id_gio_hang']));
+                            echo '<h1></h1>';
+                            for ($i = 0; $i < count($arrPro)-1; $i++) {
+                            
+                            $dat_hang = (new C_gio_hang())->gio_hang_by_id($arrPro[$i]);  
+                            ?>
 
-                    echo '<input name="ten_hh" type="text" class="form-control" value="' . $dat_hang[0]['ten_hang_hoa'] . '">';
-                    echo '<input name="dg" type="number" class="form-control" value="' . $dat_hang[0]['don_gia'] . '">';
-                    echo '<input name="sl" type="number" class="form-control" value="' . $dat_hang[0]['so_luong_san_pham'] . '">';
-                    echo '<input name="tg" type="number" class="form-control" value="' . $dat_hang[0]['tong_gia'] . '">';
+                                <tr>
+                                    <td><?=$dat_hang[0]['ten_hang_hoa']?></td>
+                                    <td><?=$dat_hang[0]['don_gia'] ?></td>
+                                    <td><?=$dat_hang[0]['so_luong_san_pham'] ?></td>
+                                    <td><?=$dat_hang[0]['tong_gia'] ?></td>
+                                </tr>
+                        
+                <?php }
 
-                    ?>
-                    <input onclick="alert('Đặt hàng thành công')" type="submit" name="add_salee"  class="btn btn-primary w-100 form-input my-3" value="Đặt hàng">
+                ?>
+                </tbody>
+                    </table>
+                <input onclick="alert('Đặt hàng thành công')" type="submit" name="add_salee" class="btn btn-primary w-100 form-input my-3" value="Đặt hàng">
                 </div>
             </div>
     </form>
     <?php
-    // include_once "controller/c_don_hang.php";
-    include_once 'model/database.php';
+    include_once "ex_dat_hang.php";
     if (isset($_POST['add_salee'])) {
-        $ten_hang_hoa = $_POST['ten_hh'];
-        $gia_tien = $_POST['dg'];
-        $so_luong = $_POST['sl'];
-        $tong_gia = $_POST['tg'];
+        
+        
         $ten_khach_hang = $_SESSION['ho_ten'];
         $email_khach_hang = $_SESSION['email'];
         $xa = $_POST['phuong_xa'];
         $huyen = $_POST['quan_huyen'];
         $tinh = $_POST['tinh'];
         $sdt = $_POST['sdt'];
-        $trang_thai = 1;
 
-        $query = "INSERT INTO `don_hang`(`ten_hang_hoa`, `gia_tien`, `so_luong`, `tong_gia`, 
-        `ten_khach_hang`, `email_khach_hang`, `xa`, `huyen`, `tinh`, `sdt`, `trang_thai`)
-         VALUES (?,?,?,?,?,?,?,?,?,?,?);";
-        (new database())->pdo_execute(
-            $query,
-            $ten_hang_hoa,
+        for ($i = 0; $i < count($arrPro)-1; $i++) {        
+            $dat_hang = (new C_gio_hang())->gio_hang_by_id($arrPro[$i]);  
+            $ten_hang_hoa =  $dat_hang[0]['ten_hang_hoa'];
+            $gia_tien = $dat_hang[0]['don_gia'];
+            $so_luong = $dat_hang[0]['so_luong_san_pham'];
+            $tong_gia = $dat_hang[0]['tong_gia'];
+
+            submitDatHang($ten_hang_hoa,
             $gia_tien,
             $so_luong,
             $tong_gia,
@@ -80,10 +99,9 @@
             $xa,
             $huyen,
             $tinh,
-            $sdt,
-            $trang_thai
-        );
-        header("Location:gio_hang.php");
+            $sdt);
+        }
+
     }
     ?>
 </div>
@@ -176,6 +194,4 @@
 
 
     });
-
-    
 </script>
