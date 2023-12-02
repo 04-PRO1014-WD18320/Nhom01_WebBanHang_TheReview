@@ -17,45 +17,17 @@
                                     <a class="nav-link text-white active" aria-current="page" href="index.php">Trang
                                         chủ</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                       Macbook
-                                    </a>
-                                    <ul class="dropdown-menu  text-white">
-                                        <li><a class="dropdown-item" href="index.php?ma_loai=31">
-                                            Macbook Pro
-                                            </a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="index.php?ma_loai=31">Macbook Air</a>
-                                        </li>
-
-                                    </ul>
+                                <li class="nav-item">
+                                    <a class="nav-link  text-white active" aria-current="page" href="index.php?ma_loai=31">Macbook</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                       Iphone
-                                    </a>
-                                    <ul class="dropdown-menu  text-white">
-                                        <li><a class="dropdown-item" href="index.php?ma_loai=33">
-                                            Iphone 15 Pro
-                                            </a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="index.php?ma_loai=33">Iphone 14 Pro</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="index.php?ma_loai=33">Iphone 13 Pro</a>
-                                        </li>
-                                    </ul>
+                                <li class="nav-item">
+                                    <a class="nav-link  text-white active" aria-current="page" href="index.php?ma_loai=33">Iphone</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link  text-white active" aria-current="page" href="index.php?ma_loai=32">Apple Watch</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link  text-white active" aria-current="page" href="#">Tin tức</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link  text-white active" aria-current="page" href="#">Liên hệ</a>
+                                    <a class="nav-link  text-white active" aria-current="page" href="#footer">Liên hệ</a>
                                 </li>
                             </ul>
 

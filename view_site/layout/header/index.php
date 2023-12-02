@@ -80,7 +80,7 @@
                             <span class="fs-2 "><i class="fa-solid fa-heart"></i></span>
                             <span
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                99+
+                                0
                                 <span class="visually-hidden">unread messages</span>
                             </span>
                         </a></div>
@@ -89,19 +89,12 @@
                             <span class="fs-2 "><i class="fa-solid fa-cart-shopping"></i></i></span>
                             <span
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                00
+                                <?=$so_luong[0]?>
                                 <span class="visually-hidden">unread messages</span>
                             </span>
                         </a></div>
                     <?php } ?>
-                    <div class="col"><a href="#" class=" position-relative">
-                            <span class="fs-2 "><i class="fa-duotone fa-inbox"></i></span>
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                99+
-                                <span class="visually-hidden">unread messages</span>
-                            </span>
-                        </a></div>
+                    
                 </div>
             </div>
         </div>

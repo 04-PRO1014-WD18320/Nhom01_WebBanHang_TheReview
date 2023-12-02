@@ -58,7 +58,6 @@
                             <h5>Tên khách hàng : <?= $_SESSION['ho_ten'] ?></h5>
                             <p>Email : <?= $_SESSION['email'] ?></p>
 
-                            <h5 class="fw-bold text-danger">Thành tiền : $</h5>
                         </div>
 
                     </div>

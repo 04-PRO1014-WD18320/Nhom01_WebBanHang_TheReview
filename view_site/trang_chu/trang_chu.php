@@ -6,7 +6,7 @@
                     <div class=" d-flex flex-column mt-5" role="group" aria-label="Basic example">
                         <div class="btn-group dropend">
                             <button type="button" class="btn btn-light btn-lg dropdown-toggle rounded-0 btn-hover" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-laptop"></i> <b>Macbook Air</b>
+                                <i class="fa-solid fa-laptop"></i><b>Macbook Air</b>
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Macbook Air 2022</a></li>

@@ -76,27 +76,7 @@ if (isset($_SESSION['id'])) { ?>
                                 10% khi mua phụ kiện
                                 kèm theo</p>
                         </div>
-                        <form action="" class="my-3 d-flex flex-column">
-                            <div class="my-3">
-                                <input type="checkbox" class="btn-check dungluong" id="btn-check-1" checked autocomplete="off">
-                                <label class="btn tendungluong" for="btn-check-1">128 GB</label>
-                                <input type="checkbox" class="btn-check dungluong" id="btn-check-2" checked autocomplete="off">
-                                <label class="btn tendungluong" for="btn-check-2">256 GB</label>
-                                <input type="checkbox" class="btn-check dungluong" id="btn-check-3" checked autocomplete="off">
-                                <label class="btn tendungluong" for="btn-check-3">512 GB</label>
-                            </div>
-
-                            <div class="my-3">
-                                <input type="checkbox" class="btn-check rounded-circle m-3" id="btn-check-4" checked autocomplete="off">
-                                <label class="btn btn-light m-2 p-4 border border-secondary border-2" for="btn-check-4"></label>
-                                <input type="checkbox" class="btn-check rounded-circle m-3" id="btn-check-5" checked autocomplete="off">
-                                <label class="btn btn-dark m-2 p-4 border border-secondary border-2" for="btn-check-5"></label>
-                                <input type="checkbox" class="btn-check rounded-circle m-3" id="btn-check-6" checked autocomplete="off">
-                                <label class="btn btn-danger m-2 p-4 border border-secondary border-2" for="btn-check-6"></label>
-                            </div>
-
-
-                        </form>
+                        
 
                         <div class="border p-4">
 
@@ -122,7 +102,7 @@ if (isset($_SESSION['id'])) { ?>
                         <div class="mt-3 d-grid gap-2">
 
                             <!-- <button id="add" class="btn btn-danger"></button> -->
-                            <button id="add" class="btn btn-danger" type="submit">Mua ngay</button>
+                            <button id="add" class="btn btn-danger" type="submit"><i class="fa-solid fa-cart"></i>Thêm vào giỏ hàng</button>
 
                             <a href="#" class="btn btn-success"><i class="fa-solid fa-phone"></i> Liên hệ</a>
                         </div>
