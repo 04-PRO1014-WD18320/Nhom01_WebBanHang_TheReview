@@ -22,9 +22,6 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="thong_ke.php">THỐNG KÊ</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="don_hang.php">QUẢN LÝ ĐƠN HÀNG</a>
-            </li>
 
         </ul>
 

@@ -1,4 +1,3 @@
-
 <div class="container-fluid ">
 <div id=""  style="background-color: #4158D0;
 background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
@@ -29,7 +28,7 @@ background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
                                 <h5>Nhập lại mật khẩu</h5>
                                 <input type="password" name="re-password" id="" class="form-control my-2"
                                     placeholder="Vui lòng nhập lại mật khẩu" minlength="4" maxlength="20" required>
-                                <input type="checkbox" name="agree" id="checkk" class="my-2" > 
+                                <input type="checkbox" name="" id="checkk" class="my-2" > 
                                 Tôi đã đọc và đồng ý với 
                                 <a type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                    điều khoản sử dụng

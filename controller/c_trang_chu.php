@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("model/m_hang_hoa.php");
+include("model/m_gio_hang.php");
 include("c_binh_luan.php");
 
 class C_trang_chu
@@ -39,4 +40,5 @@ class C_trang_chu
         $view = "view_site/loai_hang/select_loai_hang.php";
         include("view_site/layout/index.php");
     }
+    
 }

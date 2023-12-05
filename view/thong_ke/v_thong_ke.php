@@ -29,44 +29,8 @@
 
     </tbody>
 </table>
-<label for="">Đơn hàng</label>
-<table class="table">
-    <thead>
-        <tr>
+<form action="thong_ke.php" method="post">
+    <input type="hidden" name="action" value="xem_thong_ke">
+    <button type="submit" class="btn btn-danger">Xem biểu đồ</button>
 
-            <th scope="col">Số đơn</th>
-            <th scope="col">Tổng doanh thu</th>
-            <th scope="col">Đơn cao nhất</th>
-            <th scope="col">Đơn thấp nhất</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        
-        <?php $max=0;$i=0; $tong=0; foreach ($getorder_minmax as $tk) { 
-                $tong=$tong+$tk['sum'];
-                if($tk['sum']>$max){
-                    $maxValue=$tk['sum'];
-                    $max=$tk['sum'];
-                }
-                if($i==0){
-                    $min=$tk['sum'];
-                }
-                if($tk['sum']<=$min){
-                    $minValue=$tk['sum'];
-                    $min=$tk['sum'];
-                }
-                $i++;
-        }
-        
-            ?>
-            <tr>
-                <td><?php echo $getorder['num'] ?></td>
-                <td><?php echo $tong ?></td>
-                <td><?php echo $maxValue ?></td>
-                <td><?php echo $minValue ?></td>
-            </tr>
-
-    </tbody>
-        </table>
-        
+</form>

@@ -17,7 +17,6 @@ class C_loai_hang
         $view = "view/loai_hang/v_loai_hang.php";
         include("view/layout/index.php");
     }
-    
 
 
     function store()

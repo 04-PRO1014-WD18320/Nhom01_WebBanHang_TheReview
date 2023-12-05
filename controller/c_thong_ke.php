@@ -9,8 +9,7 @@ class C_thong_ke
         // gọi và db lấy dữ liệux
         $m_thong_ke = new M_thong_ke();
         $thong_ke = $m_thong_ke->thong_ke();
-        $getorder=$m_thong_ke->getorder();
-        $getorder_minmax=$m_thong_ke->getorder_minmax();
+
 
         // hiển thị ra màn hình
         $title = 'Thống kê';
