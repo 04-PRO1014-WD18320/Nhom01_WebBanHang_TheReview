@@ -85,7 +85,11 @@
                             </span>
                         </a></div>
                     <?php if (1) { ?>
-                    <div class="col"><a href="./gio_hang.php" class=" position-relative">
+                    <div class="col"><a href="<?php if(isset($_SESSION['id'])){
+                        echo "./gio_hang.php";
+                    }else{
+                        echo "./dang_ky_dang_nhap.php";
+                    }?>" class=" position-relative">
                             <span class="fs-2 "><i class="fa-solid fa-cart-shopping"></i></i></span>
                             <span
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">

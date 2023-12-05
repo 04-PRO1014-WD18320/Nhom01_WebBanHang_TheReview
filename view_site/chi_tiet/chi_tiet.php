@@ -2,13 +2,13 @@
 // session_start();
 ?>
 
-<div id="popup" style="transform : translate(-50%, -50%); " class="position-fixed top-50 start-50 alert alert-info">
-    Đặt hàng thành công
-</div>
+
 
 <?php
 if (isset($_SESSION['id'])) { ?>
-
+<div id="popup" style="transform : translate(-50%, -50%)" class="position-fixed top-50 start-50 alert alert-info">
+    Đặt hàng thành công
+</div>
 
     <button type="button" class="btn btn-primary position-fixed bottom-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i class="fa-solid fa-comments" style="color: #ffffff;"></i> <span class="badge text-bg-danger bg-danger">4</span>
@@ -50,15 +50,12 @@ if (isset($_SESSION['id'])) { ?>
                         <?= $chi_tiet_hang_hoa['ten_hang_hoa'] ?>
                         </h5>
                         <p class="card-text">
-
-                            –
-                            NEW
                         </p>
                         <del>
                             <?= $chi_tiet_hang_hoa['don_gia'] ?>
                         </del>
                         <p class="fs-4 text-danger fw-bold">
-                            <?= $chi_tiet_hang_hoa['don_gia'] ?> VND
+                            <?= $chi_tiet_hang_hoa['giam_gia'] ?> VND
                         </p>
                         <div>
                             <p><i class="fa-solid fa-hand-point-up fa-rotate-90" style="color: #218656;"></i> Sản
@@ -78,28 +75,9 @@ if (isset($_SESSION['id'])) { ?>
                         </div>
                         
 
-                        <div class="border p-4">
+                       
 
-                            <p><i class="fa-solid fa-gear" style="color: red;"></i> Bộ xử lý CPU:
-                                chip with
-                                8‑core CPU, 8‑core GPU, 16‑core Neural Engine
-                            </p>
-                            <p><i class="fa-solid fa-gear" style="color: red;"></i> Bộ nhớ RAM:
-                                unified memory
-                            </p>
-                            <p><i class="fa-solid fa-gear" style="color: red;"></i> Ổ cứng:
-                                SSD storage
-                            </p>
-                            <p><i class="fa-solid fa-gear" style="color: red;"></i> Màn hình:
-                                Liquid Retina
-                                display with True Tone
-                            </p>
-                            <p><i class="fa-solid fa-gear" style="color: red;"></i> Card màn hình:
-
-                            </p>
-                        </div>
-
-                        <div class="mt-3 d-grid gap-2">
+                        <div class="mt-5 d-grid gap-2">
 
                             <!-- <button id="add" class="btn btn-danger"></button> -->
                             <button id="add" class="btn btn-danger" type="submit"><i class="fa-solid fa-cart"></i>Thêm vào giỏ hàng</button>
@@ -132,16 +110,14 @@ if (isset($_SESSION['id'])) { ?>
                             <div class="card-body">
                                 <p><i class="fa-solid fa-check" style="color: #218656;"></i> Dùng thử 10 ngày miễn
                                     phí
-                                    đổi máy. (Macbook Like New)</p>
-                                <p><i class="fa-solid fa-check" style="color: #218656;"></i> Lỗi 1 Đổi 1 trong 30
+                                    đổi máy.</p>
+                                <p><i class="fa-solid fa-check" style="color: #218656;"></i> Lỗi 1 Đổi 1 trong 10
                                     ngày
-                                    đầu. (Macbook Like New)</p>
+                                    đầu. </p>
                                 <p><i class="fa-solid fa-check" style="color: #218656;"></i> Giao hàng tận nhà toàn
                                     quốc
                                 </p>
-                                <p><i class="fa-solid fa-check" style="color: #218656;"></i> Thanh toán khi nhận
-                                    hàng
-                                    (nội thành)</p>
+                                
                             </div>
                         </div>
                     </a>
@@ -149,7 +125,7 @@ if (isset($_SESSION['id'])) { ?>
             </div>
         </div>
     </div>
-    <div id="sec-3" class="mx-5">
+    <!-- <div id="sec-3" class="mx-5">
         <h3 class="mt-5 mb-4">Thông số kỹ thuật</h3>
         <table class="table table-striped table-bordered">
             <tbody>
@@ -198,7 +174,7 @@ if (isset($_SESSION['id'])) { ?>
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> -->
 
     <div id="sec-4" class="mx-5 d-flex flex-column">
         <h3 class="mt-5 mb-4">Mô tả sản phẩm</h3>
