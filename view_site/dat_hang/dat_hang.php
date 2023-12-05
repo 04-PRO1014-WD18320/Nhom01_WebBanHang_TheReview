@@ -49,20 +49,25 @@
                         <tbody>
                             <?php include_once "controller/c_gio_hang.php";
                             $arrPro = explode(".", rtrim($_GET['id_gio_hang']));
-                            for ($i = 0; $i < count($arrPro) - 1; $i++) {
-                                $dat_hang = (new C_gio_hang())->gio_hang_by_id($arrPro[$i]);
+                            echo '<h1></h1>';
+                            for ($i = 0; $i < count($arrPro)-1; $i++) {
+                            
+                            $dat_hang = (new C_gio_hang())->gio_hang_by_id($arrPro[$i]);  
                             ?>
 
                                 <tr>
-                                    <td><?= $dat_hang[0]['ten_hang_hoa'] ?></td>
-                                    <td><?= $dat_hang[0]['don_gia'] ?></td>
-                                    <td><?= $dat_hang[0]['so_luong_san_pham'] ?></td>
-                                    <td><?= $dat_hang[0]['tong_gia'] ?></td>
+                                    <td><?=$dat_hang[0]['ten_hang_hoa']?></td>
+                                    <td><?=$dat_hang[0]['don_gia'] ?></td>
+                                    <td><?=$dat_hang[0]['so_luong_san_pham'] ?></td>
+                                    <td><?=$dat_hang[0]['tong_gia'] ?></td>
                                 </tr>
-                            <?php } ?>
-                        </tbody>
+                        
+                <?php }
+
+                ?>
+                </tbody>
                     </table>
-                    <input type="submit" name="add_salee" class="btn btn-primary w-100 form-input my-3" value="Đặt hàng">
+                <input type="submit" name="add_salee" class="btn btn-primary w-100 form-input my-3" value="Đặt hàng">
                 </div>
             </div>
     </form>
@@ -70,8 +75,8 @@
     // include_once "ex_dat_hang.php";
     include_once 'model/database.php';
     if (isset($_POST['add_salee'])) {
-
-
+        
+        
         $ten_khach_hang = $_SESSION['ho_ten'];
         $email_khach_hang = $_SESSION['email'];
         $xa = $_POST['phuong_xa'];
@@ -79,31 +84,24 @@
         $tinh = $_POST['tinh'];
         $sdt = $_POST['sdt'];
         $queryDH = "INSERT INTO `don_hang`(`ten_khach_hang`, `email_khach_hang`, `xa`, `huyen`, `tinh`, `sdt`, `trang_thai`)
-        VALUES (?,?,?,?,?,?,?)";
-        $queryDel = "DELETE FROM `gio_hang` WHERE id_gio_hang = ?";
+        VALUES (?,?,?,?,?,?,?)";  
         (new database())->pdo_execute_run($queryDH, $ten_khach_hang, $email_khach_hang, $xa, $huyen, $tinh, $sdt, 1);
 
         $oderID = (new database())->pdo_query_one('select MAX(id_don_hang) from don_hang;');
+        
+        $queryCTDH = "INSERT INTO `ct_don_hang`(`ten_hang_hoa`, `gia_tien`, `so_luong`, `id_don_hang`)
+        VALUES(?,?,?,?)";
+        for ($i = 0; $i < count($arrPro)-1; $i++) {        
+        $dat_hang = (new C_gio_hang())->gio_hang_by_id($arrPro[$i]);  
+        $ten_hang_hoa =  $dat_hang[0]['ten_hang_hoa'];
+        $gia_tien = $dat_hang[0]['don_gia'];
+        $so_luong = $dat_hang[0]['so_luong_san_pham'];
 
-        $queryCTDH = "INSERT INTO `ct_don_hang`(`ten_hang_hoa`, `gia_tien`, `so_luong`, `id_don_hang`) VALUES(?,?,?,?);";
-        $queryDel = "DELETE FROM `gio_hang` WHERE id_gio_hang = ?";
-        for ($i = 0; $i < count($arrPro) - 1; $i++) {
-            $dat_hang = (new C_gio_hang())->gio_hang_by_id($arrPro[$i]);
-            $ten_hang_hoa =  $dat_hang[0]['ten_hang_hoa'];
-            $gia_tien = $dat_hang[0]['don_gia'];
-            $so_luong = $dat_hang[0]['so_luong_san_pham'];
-
-
-            (new database())->pdo_execute_run($queryCTDH, $ten_hang_hoa , $gia_tien,  $so_luong, $oderID[0]);
-            (new database())->pdo_execute_run($queryDel, $arrPro[$i]);
-
-        }
-        echo "<script>
-            location.href = './index.php';
-            alert('Đặt hàng thành công');
-        </script>";
+        (new database())->pdo_execute($queryCTDH, $ten_hang_hoa , $gia_tien,  $so_luong, $oderID[0]);
+        
     }
-    
+    echo '<script>alert("Đặt hàng thành công")</script>';
+}
     ?>
 </div>
 

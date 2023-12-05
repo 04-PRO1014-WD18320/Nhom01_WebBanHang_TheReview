@@ -4,9 +4,9 @@ class database
 
     public function pdo_get_connection()
     {
-        $servername = 'localhost';
-        $username = 'root';
-        $pass = '';
+        $servername = 'localhost:3307';
+        $username = 'uyen';
+        $pass = 'uyen';
 
         try {
             $con = new PDO("mysql:host=$servername;dbname=Xshop", $username, $pass);
@@ -28,6 +28,7 @@ class database
                 $stmt = $con->prepare($sql);
                 $stmt->execute($sql_args);
             }
+            return true;
         } catch (PDOException $ex) {
             throw $ex;
         }

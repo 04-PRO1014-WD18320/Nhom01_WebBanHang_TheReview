@@ -11,7 +11,8 @@
         <table class="table table-striped ">
             <thead>
                 <tr>
-                    <td>Mã đơn hàng</td> 
+                    <td>Mã đơn hàng</td>
+                    <td>Tên hàng hóa</td>
                     <td>Tên khách hàng</td>
                     <td>Trạng thái</td>
                     <td></td>
@@ -21,6 +22,7 @@
                 <?php foreach ($don_hang as $val) { ?>
                     <tr style="width : 2000px">
                         <td><?= $val['id_don_hang'] ?></td>
+                        <td><?= $val['ten_hang_hoa'] ?></td>
                         <td><?= $val['ten_khach_hang'] ?></td>
                         <td><?php
                             switch ($val['trang_thai']) {
@@ -70,42 +72,6 @@
                                                             ?>
                                                         </td>
                                                     </tr>
-                                                </tbody>
-                                            </table>
-                                            Thông tin sản phẩm
-                                            <table class='table table-striped align-middle'>
-                                                <thead>
-                                                    <tr>
-                                                        <td>STT</td>
-                                                        <td>Tên hàng hóa</td>
-                                                        <td>Giá tiền</td>
-                                                        <td>Số lượng</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                    <?php
-                                                    include_once 'model/m_ct_don_hang.php';
-                                                    $ct_dh = (new M_ct_don_hang())->get_all_by_id($val['id_don_hang']);
-                                                    $sum = (new M_ct_don_hang())->getSum($val['id_don_hang']);
-                                                    foreach($ct_dh as $key => $vall){ ?>
-                                                    <tr>
-                                                        <td><?=$key+1?></td>
-                                                        <td><?=$vall['ten_hang_hoa']?></td>
-                                                        <td><?=$vall['gia_tien']?></td>
-                                                        <td><?=$vall['so_luong']?></td>
-                                                    </tr>
-                                                    
-                                                    <?php }
-                                                    ?>
-                                                    <tr class="border border-danger">
-                                                        <td>Tổng tiền</td>
-                                                        <td></td>
-                                                        <td><?=$sum[0]['sum']?></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    
-                                                    
                                                 </tbody>
                                             </table>
                                             Tình trạng đơn hàng :

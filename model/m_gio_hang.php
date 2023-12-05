@@ -71,8 +71,8 @@ class M_gio_hang extends database
     }
     function dem_so_luong_gio_hang($ma_khach_hang)
     {
-        $sql = "SELECT COUNT(ma_san_pham) FROM gio_hang WHERE ma_khach_hang = ".$ma_khach_hang;
-        return $this->pdo_query_one($sql);
+        $sql = "SELECT COUNT(ma_san_pham) FROM gio_hang WHERE ma_khach_hang = ?";
+        return $this->pdo_query_one($sql, $ma_khach_hang);
     }
     function gio_hang_by_id2($id_gio_hang)
     {

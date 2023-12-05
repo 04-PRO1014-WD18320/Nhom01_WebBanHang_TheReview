@@ -29,12 +29,12 @@
                             <td><?php echo $gio_hang['ten_hang_hoa'] ?></td>
                             <td><?php echo $gio_hang['don_gia'] ?></td>
                             <td>
-                                
-                                <input type="button" value="-" class="giam btn btn-primary rounded rounded-circle" data-ma-san-pham="<?php echo $gio_hang['ma_san_pham'] ?>">
+                                <input type="button" value="+" class="tang btn btn-primary rounded rounded-circle" data-ma-san-pham="<?php echo $gio_hang['ma_san_pham'] ?>">
+
                                 <strong id="<?php echo "ma_san_pham" . $gio_hang['ma_san_pham'] ?>">
                                     <?php echo $gio_hang['so_luong_san_pham'] ?></strong>
-                                <input type="button" value="+" class="tang btn btn-primary rounded rounded-circle" data-ma-san-pham="<?php echo $gio_hang['ma_san_pham'] ?>">                                       
-                                
+
+                                <input type="button" value="-" class="giam btn btn-primary rounded rounded-circle" data-ma-san-pham="<?php echo $gio_hang['ma_san_pham'] ?>">
                             </td>
                             <td><?php echo $gio_hang['tong_gia'] ?></td>
                             <td> <input type="button" value="Xoá" class="xoa btn btn-danger" data-ma-san-pham="<?php echo $gio_hang['ma_san_pham'] ?>">
@@ -58,6 +58,7 @@
                             <h5>Tên khách hàng : <?= $_SESSION['ho_ten'] ?></h5>
                             <p>Email : <?= $_SESSION['email'] ?></p>
 
+                            <h5 class="fw-bold text-danger">Thành tiền : $</h5>
                         </div>
 
                     </div>

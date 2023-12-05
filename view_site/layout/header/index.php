@@ -50,6 +50,7 @@
                                                     khoản</a></li>
 
                                             <li><a class="dropdown-item" href="dang_xuat.php">Đăng xuất</a></li>
+                                            <li><a class="dropdown-item" href="user_don_hang.php">Đơn hàng</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -80,25 +81,28 @@
                             <span class="fs-2 "><i class="fa-solid fa-heart"></i></span>
                             <span
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                0
+                                99+
                                 <span class="visually-hidden">unread messages</span>
                             </span>
                         </a></div>
                     <?php if (1) { ?>
-                    <div class="col"><a href="<?php if(isset($_SESSION['id'])){
-                        echo "./gio_hang.php";
-                    }else{
-                        echo "./dang_ky_dang_nhap.php";
-                    }?>" class=" position-relative">
+                    <div class="col"><a href="./gio_hang.php" class=" position-relative">
                             <span class="fs-2 "><i class="fa-solid fa-cart-shopping"></i></i></span>
                             <span
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                <?=$so_luong[0]?>
+                                00
                                 <span class="visually-hidden">unread messages</span>
                             </span>
                         </a></div>
                     <?php } ?>
-                    
+                    <div class="col"><a href="#" class=" position-relative">
+                            <span class="fs-2 "><i class="fa-duotone fa-inbox"></i></span>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                99+
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                        </a></div>
                 </div>
             </div>
         </div>

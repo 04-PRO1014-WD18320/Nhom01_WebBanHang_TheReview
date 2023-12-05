@@ -22,15 +22,7 @@
 <body>
     <div>
         <?php
-        include_once("controller/c_nav.php");
-        $c_nav = new C_nav();
-        if(isset($_SESSION['id'])){
-        $c_nav->hienThiSoLuong($_SESSION['id']);
-   
-        }else{
-            require("header/index.php");
-        }
-    
+        require("header/index.php");
         require("content/index.php");
         require("footer/index.php");
         ?>
