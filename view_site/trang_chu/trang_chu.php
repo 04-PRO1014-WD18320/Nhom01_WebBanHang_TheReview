@@ -125,7 +125,7 @@
     </div>
 
     <div id="sec-1" class="container-fluid mt-5">
-        <h2>Sản phẩm bán chạy</h2>
+        <h2>Sản phẩm của chúng tôi</h2>
         <div id="sec-1-content" class="container-fluid">
             <div class="row">
             <?php
@@ -139,9 +139,10 @@
                             <div class="card-body">
                                 <h5 class=""><?=$san_pham['ten_hang_hoa']?></h5>
                                 <p class="card-text">Ram Rom </p>
-                                <span class="badge text-bg-warning">Đã bán: <?=$san_pham['da_ban']?></span>
+                                <!-- <span class="badge text-bg-warning">Đã bán: <?=$san_pham['da_ban']?></span> -->
+                                <span class="badge text-bg-warning">Ưu đãi: <?=round(($san_pham['don_gia']-$san_pham['giam_gia'])*100/$san_pham['don_gia'])?>%</span>
                                 <del><?=$san_pham['don_gia']?> đ</del>
-                                <p class="fs-5 text-danger fw-bold"><?=$san_pham['don_gia'] ?>đ</p>
+                                <p class="fs-5 text-danger fw-bold"><?=$san_pham['giam_gia'] ?>đ</p>
 
                                 <a href="#" class="btn btn-outline-danger mt-1"><i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng</a>
                             </div>
