@@ -138,7 +138,7 @@
                             <img style="height: 15rem;" src="public/asset/<?=$san_pham['hinh']?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class=""><?=$san_pham['ten_hang_hoa']?></h5>
-                                <p class="card-text">Ram Rom </p>
+                                
                                 <!-- <span class="badge text-bg-warning">Đã bán: <?=$san_pham['da_ban']?></span> -->
                                 <span class="badge text-bg-warning">Ưu đãi: <?=round(($san_pham['don_gia']-$san_pham['giam_gia'])*100/$san_pham['don_gia'])?>%</span>
                                 <del><?=$san_pham['don_gia']?> đ</del>

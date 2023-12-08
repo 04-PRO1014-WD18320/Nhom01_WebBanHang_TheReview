@@ -1,6 +1,6 @@
 <form class="row g-3" action="loai_hang.php" method="POST">
     <div class="col-md-6">
-        <input type="hiden" name="action" value="<?php echo $action; ?>">
+        <input type="hidden" name="action" value="<?php echo $action; ?>">
         <br>
         <label class="form-label">Mã loại</label>
         <input type="text" class="form-control" name="ma_loai" value="<?php echo $loai_hang_by_id['ma_loai'] ?>">

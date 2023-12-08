@@ -7,11 +7,7 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Từ khoá tìm kiếm "
-                        aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
-                </div>
+               
             </div>
             <div class="col-md-3">
                 <div class="row">
@@ -77,12 +73,7 @@
             <div class="col-md-2">
                 <div class="row">
                     <div class="col"><a href="#" class=" position-relative">
-                            <span class="fs-2 "><i class="fa-solid fa-heart"></i></span>
-                            <span
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                0
-                                <span class="visually-hidden">unread messages</span>
-                            </span>
+                            
                         </a></div>
                     <?php if (1) { ?>
                     <div class="col"><a href="<?php if(isset($_SESSION['id'])){
