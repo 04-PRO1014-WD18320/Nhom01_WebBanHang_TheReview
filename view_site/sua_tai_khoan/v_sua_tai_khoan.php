@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <div class="container my-5 ">
     <div class="row">
@@ -26,6 +27,7 @@
                         name="mat_khau" required>
                 </div>
                 <button type="submit" class="btn btn-primary" name="action" value="update">Lưu</button>
+
             </form>
         </div>
         <div class="col-md-4 "></div>

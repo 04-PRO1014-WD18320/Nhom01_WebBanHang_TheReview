@@ -4,22 +4,10 @@ include "controller/c_loai_hang.php";
 $c_loai_hang = new C_loai_hang();
 
 // phuowng thuwcs update
-if(isset($_POST['action'])){
 if ($_POST['action'] == "update") {
     $c_loai_hang->update($_POST);
     return;
 }
-if ($_POST['action'] == "create") {
-    $c_loai_hang->create($_POST);
-    return;
-}
-if ($_POST['action'] == "delete") {
-    $ma_loai = $_POST['data'];
-    $c_loai_hang->del($ma_loai);
-    return;
-}
-}
-
 
 // phuong thuc edit
 if (isset($_GET['ma_loai'])) {
@@ -30,7 +18,10 @@ if (isset($_GET['ma_loai'])) {
 
 
 // phhuowng thức tạo
-
+if ($_POST['action'] == "create") {
+    $c_loai_hang->create($_POST);
+    return;
+}
 
 // phuong thuc edit
 if (isset($_GET['store'])) {
@@ -38,7 +29,11 @@ if (isset($_GET['store'])) {
     return;
 }
 // phương thức xoá
-
+if ($_POST['action'] == "delete") {
+    $ma_loai = $_POST['data'];
+    $c_loai_hang->del($ma_loai);
+    return;
+}
 
 
 // echo "admin";
