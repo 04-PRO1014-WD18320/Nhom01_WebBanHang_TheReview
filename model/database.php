@@ -27,6 +27,7 @@ class database
             if ($con) {
                 $stmt = $con->prepare($sql);
                 $stmt->execute($sql_args);
+                return true;
             }
         } catch (PDOException $ex) {
             throw $ex;
