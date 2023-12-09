@@ -41,4 +41,9 @@ class M_khach_hang extends database
         $sql = "SELECT * FROM khach_hang WHERE email = ?";
         return $this->pdo_query($sql, [$email]);
     }
+
+    function repass($matkhau,$email){
+        $sql="UPDATE khach_hang SET mat_khau='$matkhau' WHERE email='$email'";
+        return $this->pdo_execute($sql);
+    }
 }

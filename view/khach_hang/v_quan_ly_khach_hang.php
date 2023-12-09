@@ -15,7 +15,7 @@
         foreach ($khach_hang as $khach) {
         ?>
         <tr>
-
+            <td><input type="checkbox" name="" id=""></td>
             <td><?php echo $khach['ma_khach_hang'] ?></td>
             <td><?php echo $khach["mat_khau"] ?></td>
             <td><?php echo $khach['ho_ten'] ?></td>
@@ -35,3 +35,7 @@
     </tbody>
 </table>
 
+
+<button><a href="xoa_loai_hang.php">Chọn tất cả </a></button>
+<button>Bỏ chọn tất cả</button>
+<button>Xoá mục đã chọn </button>
