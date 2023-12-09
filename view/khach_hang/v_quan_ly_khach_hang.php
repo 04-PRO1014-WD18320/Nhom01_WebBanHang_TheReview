@@ -1,8 +1,8 @@
-<table class="table caption-top">
-    <caption>List of users</caption>
+<table style="width:80%; margin-left:10%" class="table caption-top ">
+ 
     <thead>
         <tr>
-            <th></th>
+       
             <th scope="col">Mã khách hàng</th>
             <th scope="col">Mật khẩu</th>
             <th scope="col">Họ tên</th>
@@ -15,7 +15,7 @@
         foreach ($khach_hang as $khach) {
         ?>
         <tr>
-            <td><input type="checkbox" name="" id=""></td>
+       
             <td><?php echo $khach['ma_khach_hang'] ?></td>
             <td><?php echo $khach["mat_khau"] ?></td>
             <td><?php echo $khach['ho_ten'] ?></td>
@@ -36,6 +36,3 @@
 </table>
 
 
-<button><a href="xoa_loai_hang.php">Chọn tất cả </a></button>
-<button>Bỏ chọn tất cả</button>
-<button>Xoá mục đã chọn </button>

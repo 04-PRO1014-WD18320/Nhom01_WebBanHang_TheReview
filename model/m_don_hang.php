@@ -5,7 +5,7 @@ include_once "database.php";
 class M_don_hang extends database{
 
     function get_all_don_hang(){
-        $query = "SELECT * FROM don_hang INNER JOIN phuong_xa ON don_hang.xa=phuong_xa.id_phuong_xa INNER JOIN quan_huyen ON don_hang.huyen=quan_huyen.id_quan_huyen INNER JOIN tinh ON don_hang.tinh=tinh.id_tinh";
+        $query = "SELECT * FROM don_hang INNER JOIN phuong_xa ON don_hang.xa=phuong_xa.id_phuong_xa INNER JOIN quan_huyen ON don_hang.huyen=quan_huyen.id_quan_huyen INNER JOIN tinh ON don_hang.tinh=tinh.id_tinh ORDER BY id_don_hang DESC ";
         return $this->pdo_query( $query );
     }
 
@@ -44,7 +44,7 @@ class M_don_hang extends database{
 
     }
     function don_hang_user($id){
-        $sql="SELECT * FROM don_hang INNER JOIN phuong_xa ON don_hang.xa=phuong_xa.id_phuong_xa INNER JOIN quan_huyen ON don_hang.huyen=quan_huyen.id_quan_huyen INNER JOIN tinh ON don_hang.tinh=tinh.id_tinh WHERE ten_khach_hang='$id' AND trang_thai=3";
+        $sql="SELECT * FROM don_hang INNER JOIN phuong_xa ON don_hang.xa=phuong_xa.id_phuong_xa INNER JOIN quan_huyen ON don_hang.huyen=quan_huyen.id_quan_huyen INNER JOIN tinh ON don_hang.tinh=tinh.id_tinh WHERE ten_khach_hang='$id' AND trang_thai in (2,3)";
         return $this->pdo_query( $sql );
     }
 }

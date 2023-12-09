@@ -56,11 +56,11 @@
                     <span>Quản lý bình luận</span></a>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="./admin.php?act=tin_tuc">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Quản lý tin tức</span></a>
-            </li>
+            </li> -->
 
             <li class="nav-item">
                 <a class="nav-link" href="./admin.php?act=tin_nhan">

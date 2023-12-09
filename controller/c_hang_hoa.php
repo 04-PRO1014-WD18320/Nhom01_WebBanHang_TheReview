@@ -41,7 +41,7 @@ class C_hang_hoa
         if ($_FILES['hinh']['error'] === UPLOAD_ERR_OK) {
             $file_name = $_FILES['hinh']['name'];
             $file_tmp = $_FILES['hinh']['tmp_name'];
-            $upload_dir = 'public/image2/'; // Thay đổi đường dẫn thư mục lưu tệp của bạn.
+            $upload_dir = ''; // Thay đổi đường dẫn thư mục lưu tệp của bạn.
             $hinh = $upload_dir . $file_name;
             move_uploaded_file($file_tmp, $hinh);
         }
